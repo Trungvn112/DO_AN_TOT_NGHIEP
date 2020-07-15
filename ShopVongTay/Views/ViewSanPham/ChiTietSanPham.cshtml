@@ -1,0 +1,305 @@
+﻿@using ShopVongTay.Models
+@model SanPham
+@{
+    ViewBag.Title = "ChiTietSanPham";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/css/custom.css" rel="stylesheet" />
+<link href="~/css/chitietsanpham.css" rel="stylesheet" />
+<link href="~/css/TrangChiTiet.css" rel="stylesheet" />
+<script src="~/Scripts/TrangChiTiet.js"></script>
+<!-- Start main Content -->
+<div class="maincontent bg--white pt--80 pb--55">
+    <div class="container">
+        <div class="row">
+            @if (Session["username"] != null)
+            {
+                <span style="visibility:hidden" id="username">@Session["username"]</span>
+            }
+            else
+            {
+                <span style="visibility:hidden" id="username">@Session["Email"]</span>
+            }
+            <div class="col-lg-9 col-12">
+                <div class="wn__single__product">
+                    <div class="row">
+                        <div class="col-lg-6 col-12">
+                            <div class="wn__fotorama__wrapper">
+                                <div class="fotorama wn__fotorama__action" data-nav="thumbs">
+                                    <a href="#"><img src="~/img/sanpham/@Model.HinhAnh" alt=""></a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="product__info__main">
+                                <h1>@Model.TenSP</h1>
+                                <hr style="padding:10px" />
+                                @*<div class="product-reviews-summary d-flex">
+            <ul class="rating-summary d-flex">
+                <li><i class="zmdi zmdi-star-outline"></i></li>
+                <li><i class="zmdi zmdi-star-outline"></i></li>
+                <li><i class="zmdi zmdi-star-outline"></i></li>
+                <li class="off"><i class="zmdi zmdi-star-outline"></i></li>
+                <li class="off"><i class="zmdi zmdi-star-outline"></i></li>
+            </ul>
+        </div>*@
+                                <h3><strong></strong></h3><h5>@Model.LoaiSP.TenLoai</h5>
+                                <div class="price-box">
+                                    <h3><strong>Giá bán:<span>@string.Format("{0:0,0}", Model.DonGia) VND</span></strong></h3>
+                                </div>
+                                <h3><strong>Trạng thái:</strong></h3><h5>@Model.TrangThai</h5>
+                                <input style="visibility:hidden;" type="text" name="sl" id="sl" value="@Model.SoLuong" />
+                                <div class="product__overview">
+                                    <p>@Model.MoTa</p>
+
+                                </div>
+                                <div class="box-tocart d-flex">
+                                    @*<div id="SL">*@
+                                    @*<button class="btn-Tru" onclick="Tru()">-</button>*@
+                                    <input name="txtSL" type="number" min="1" max="50" id="txtSL" value="1" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" required />
+                                    @*<button class="btn-Cong" onclick="Cong()">+</button>*@
+                                    @*</div>*@
+                                    <div class="addtocart__actions">
+                                        <button class="tocart" type="submit" title="Add to Cart" onclick="DatHang1(@Model.MaSP)">Thêm Vào Giỏ</button>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Tab">
+                    <a id="Tab-R">Đánh Giá</a>
+                    <a id="Tab-L">Mô Tả</a>
+
+                </div>
+                <div class="Tab-Description">
+                    <h3>@Model.TenSP</h3>
+                    <h3>@Model.MoTa</h3>
+                </div>
+                <div class="Tab-Review" id="idReview">
+                    <div>
+                        <div style="display:none" class="new-Cmt">
+                            <div class="review-list">
+                                <div class="author">
+                                    <b></b>
+                                    Bình Luận Ngày: <span></span>
+                                </div>
+                                <div class="rating-review">
+                                </div>
+                                <div class="text-review">
+
+                                </div>
+                            </div>
+                        </div>
+                        @foreach (var dg in (IList<DanhGia>)ViewData["listDG"])
+                        {
+                            <div class="review-list">
+                                <div class="author">
+                                    <b>@dg.KhachHang.HoTenKH</b>
+                                    Bình Luận Ngày: <span>@string.Format("{0:dd/MM/yyyy}", dg.NgayCmt)</span>
+                                </div>
+                                <div class="rating-review">
+                                    @if (dg.DiemDG == 1)
+                                    {
+                                        <i class="fa fa-star star" aria-hidden="true"></i>
+                                        <i class="fa fa-star " aria-hidden="true"></i>
+                                        <i class="fa fa-star " aria-hidden="true"></i>
+                                        <i class="fa fa-star " aria-hidden="true"></i>
+                                        <i class="fa fa-star " aria-hidden="true"></i>
+                                    }
+                                    else if (dg.DiemDG == 2)
+                                    {
+                                        <i class="fa fa-star star" aria-hidden="true"></i>
+                                        <i class="fa fa-star star" aria-hidden="true"></i>
+                                        <i class="fa fa-star " aria-hidden="true"></i>
+                                        <i class="fa fa-star " aria-hidden="true"></i>
+                                        <i class="fa fa-star " aria-hidden="true"></i>
+                                    }
+                                    else if (dg.DiemDG == 3)
+                                    {
+                                        <i class="fa fa-star star" aria-hidden="true"></i>
+                                        <i class="fa fa-star star" aria-hidden="true"></i>
+                                        <i class="fa fa-star star" aria-hidden="true"></i>
+                                        <i class="fa fa-star " aria-hidden="true"></i>
+                                        <i class="fa fa-star " aria-hidden="true"></i>
+                                    }
+                                    else if (dg.DiemDG == 4)
+                                    {
+                                        <i class="fa fa-star star" aria-hidden="true"></i>
+                                        <i class="fa fa-star star" aria-hidden="true"></i>
+                                        <i class="fa fa-star star" aria-hidden="true"></i>
+                                        <i class="fa fa-star star" aria-hidden="true"></i>
+                                        <i class="fa fa-star " aria-hidden="true"></i>
+                                    }
+                                    else if (dg.DiemDG == 5)
+                                    {
+                                        <i class="fa fa-star star" aria-hidden="true"></i>
+                                        <i class="fa fa-star star" aria-hidden="true"></i>
+                                        <i class="fa fa-star star" aria-hidden="true"></i>
+                                        <i class="fa fa-star star" aria-hidden="true"></i>
+                                        <i class="fa fa-star star" aria-hidden="true"></i>
+                                    }
+                                </div>
+                                <div class="text-review">
+                                    @dg.cmtDanhGia
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <h3>Viết Đánh Giá</h3>
+                    <form class="frm-Rating" id="frmRating">
+                        <input type="text" id="MaSP" name="MaSP" value="@Model.MaSP" style="display:none;" />
+                        <input type="text" id="Ngay" name="Ngay" value="@DateTime.Now.ToString()" />
+                        <p>Bình luận Của Bạn:</p>
+                        <textarea name="Comment" id="erea-frmRating"></textarea>
+                        
+                        <input style="display:none;" type="text" value="@Session["username"]" name="Name" id="txt-frmRating" />
+                        <br />
+                        <b>Đánh Giá:</b>
+                        <input type="radio" name="Rating" value="1" onclick="Star(1)" />
+                        <input type="radio" name="Rating" value="2" onclick="Star(2)" />
+                        <input type="radio" name="Rating" value="3" onclick="Star(3)" />
+                        <input type="radio" name="Rating" value="4" onclick="Star(4)" />
+                        <input type="radio" name="Rating" value="5" onclick="Star(5)" />
+                        <div class="btn-frmRating">
+                            <div>
+                                <input onclick="BinhLuan()" type="button" value="Đăng" class="btn-Rating" id="subRating" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <div class="col-lg-3 col-12 md-mt-40 sm-mt-40" style="display:contents">
+                <div class="shop__sidebar">
+                    <aside class="wedget__categories poroduct--cat">
+                        <h3 class="wedget__title">Danh Mục Sản Phẩm</h3>
+                        <ul>
+                            <li><a href="@Url.Action("SanPham","Home")" style="color: red;">Tất Cả Các Sản Phẩm</a></li>
+                            <li><a href="@Url.Action("SanPhamNam","SanPham")">Vòng Tay Nam</a></li>
+                            <li><a href="@Url.Action("SanPhamNu","SanPham")">Vòng Tay Nữ</a></li>
+                            <li><a href="@Url.Action("VongTay108","SanPham")">Vòng Tay 108</a></li>
+                            <li><a href="@Url.Action("VongTayTyHuu","SanPham")">Vòng Tay Tỳ Hưu</a></li>
+                            <li><a href="@Url.Action("VongTayBocVang","SanPham")">Vòng Tay Bọc Vàng</a></li>
+                            <li><a href="@Url.Action("TramHuongChim","SanPham")">Trầm Hương Chìm</a></li>
+                            <li><a href="@Url.Action("PhuKien","SanPham")">Phụ Kiện</a></li>
+                            <li><a href="@Url.Action("NhangTram","SanPham")">Nhang Trầm Hương</a></li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End main Content -->
+<!-- Related Products Section End -->
+<div class="related-products spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Sản Phẩm Liên Quan</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var dg in (IList<SanPham>)ViewData["lstSP"])
+            {
+
+                <div class="col-lg-3 col-sm-6">
+
+                    <div class="product-item">
+                        <div class="pi-pic">
+
+                            <img src="~/img/sanpham/@dg.HinhAnh" alt="">
+                            @*<div class="sale">Sale</div>*@
+
+                            <ul>
+                                <li class="w-icon active"><a a id="txtmua" onclick="DatHang(@dg.MaSP)"><i class="icon_bag_alt"></i></a></li>
+                                <li class="quick-view"><a id="myBtn" onclick="Popup(@dg.MaSP)"><i class="fa fa-eye" aria-hidden="true"></i> Xem Nhanh</a></li>
+                                <li class="w-icon"><a href="~/ViewSanPham/ChiTietSanPham?MaSP=@dg.MaSP&MaLoai=@dg.MaLoai"><i class="fa fa-random"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="pi-text">
+                            <div class="catagory-name">@dg.LoaiSP.TenLoai</div>
+                            <a href="#">
+                                <h5>@dg.TenSP</h5>
+                            </a>
+                            <div class="product-price">
+                                @string.Format("{0:0,0}", dg.DonGia)đ
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>THÔNG TIN SẢN PHẨM</h2>
+                <span class="close">&times;</span>
+
+            </div>
+            <div class="modal-body">
+
+
+
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+<!-- Related Products Section End -->
+<script type="text/javascript">
+    function BinhLuan() {
+        var s = $('#txt-frmRating').val();
+        if (s == "") {
+            alert("Bạn cần đăng nhập để bình luận về sản phẩm này !")
+            window.location.href = "/Home/DangNhap";
+        }
+
+    }
+</script>
+<script type="text/javascript">
+    function DatHang() {
+            alert("Bạn cần đăng nhập để bình luận về sản phẩm này !")
+
+    }
+</script>
+<script>
+    // Get the modal
+    var modelz = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    var btn = document.getElementById("myBtn");
+
+    // When the user clicks the button, open the modal
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modelz.style.display = "none";
+    }
+
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modelz) {
+            modal.style.display = "none";
+        }
+    }
+</script>

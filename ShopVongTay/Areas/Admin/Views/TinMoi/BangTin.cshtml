@@ -1,0 +1,129 @@
+﻿@using ShopVongTay.Models
+@model PagedList.IPagedList<TinTuc>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "BangTin";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="~/css/CSSAD.css" rel="stylesheet" />
+<body>
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+
+                <div class="row" style="padding-top:10px">
+                    <div class="col-sm-4">
+                        @*<input type="text" value="" />*@
+                        @*<div class="show-entries">
+                                @using (Html.BeginForm("Index", "AdminCRUD", FormMethod.Get))
+                                {
+                                    <p>
+                                        Show @Html.DropDownList("size", (List<SelectListItem>)ViewBag.size, new { @onchange = "this.form.submit();" })
+                                        @Html.Hidden("page", (object)ViewBag.page)
+                                        @Html.Hidden("sortProperty", (object)ViewBag.sortProperty)
+                                        @Html.Hidden("sortOrder", (object)ViewBag.sortOrder)
+                                        @Html.Hidden("searchString", (object)ViewBag.searchValue)
+                                    </p>
+                                }
+                            </div>*@
+                        <a class="themsach" href="@Url.Action("ThemBangTin","TinMoi")">Thêm Tin</a>
+                    </div>
+
+
+                    <div class="search-box">
+                        @*<div class="input-group">
+
+                                @using (Html.BeginForm("Index", "AdminCRUD", FormMethod.Get))
+                                {
+
+                                    @Html.TextBox("searchString", (string)ViewBag.searchValue, new { @class = "form-control", @placeholder = "Search" }) <input type="submit" value="Tìm kiếm" />
+                                }
+
+                            </div>*@
+
+                        @*<form action="/Admin/AdminCRUD/Index" method="get" class="formsearch">
+                                <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+                                <input class="" id="searchString" name="searchString" placeholder="Search" type="search">
+                            </form>*@
+
+                    </div>
+
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Hình Ảnh</th>
+                        <th>Loại Tin Tức</th>
+
+                        <th>Tên Bài Viết</th>
+                        <th>
+                            Ngày Đăng
+
+                        </th>
+                        <th>
+                            <i class="fa fa-sort"></i>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <img width="15%" src="~/img/sanpham/@item.AnhDaiDien" />
+                            </td>
+                            <td>@item.LoaiTinTuc.TenLoaiTT</td>
+                            <td>@item.TenBaiViet</td>
+
+
+                            <td>@item.CapNhat</td>
+                            <td>
+                                @*<button type="button" rel="tooltip" class="btn btn-info btn-round btn-just-icon btn-sm" data-original-title="" title="">
+                                        <a href="@Url.Action("Edit", "AdminCRUD", new { id = item.MaSP })">
+                                            <i class="material-icons">edit</i>
+                                        </a>
+                                    </button>
+                                    <button type="button" rel="tooltip" class="btn btn-success btn-round btn-just-icon btn-sm" data-original-title="" title="">
+                                        <a href="@Url.Action("ChitietBookAdmin", "AdminCRUD", new { item.MaSP })">
+                                            <i class="material-icons">more_vert</i>
+                                        </a>
+                                    </button>*@
+
+                                <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-just-icon btn-sm" data-original-title="" title="">
+                                    <a href="@Url.Action("DeleteTinTuc", "TinMoi", new { id = item.ID })">
+                                        <i class="material-icons">
+                                            close
+                                        </i>
+                                    </a>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+
+
+
+                </tbody>
+            </table>
+            <div class="clearfix">
+                @*<div class="hint-text">Showing @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) out of @Model.PageCount entries</div>
+                    <ul class="pagination">
+
+                        <li class="page-item">@Html.PagedListPager(Model, page => Url.Action("Index", new { page, size = ViewBag.currentSize }))</li>
+
+                    </ul>*@
+                <div class="QL-PhanTrang" style="font-size:initial; text-align:right;">
+                    @Html.PagedListPager(Model, page => Url.Action("BangTin", new { page }))
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</body>

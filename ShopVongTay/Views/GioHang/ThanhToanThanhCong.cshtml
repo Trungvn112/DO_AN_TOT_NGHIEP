@@ -1,0 +1,125 @@
+﻿@using ShopVongTay.Models
+@model IEnumerable<SanPhamGH>
+@{
+    ViewBag.Title = "ThanhToanThanhCong";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="ThanhToanThanhCong">
+    <div class="topthanhtoan">
+        <table>
+            <tr>
+                <td>
+                    <h2>Thanh toán thành công</h2>
+                    <h4>Đơn hàng của bạn đã được thanh toán thành công.</h4>
+                    <h4>Shop sẽ liên hệ với quý khách hàng sớm để bàn giao sản phẩm đã đặt hàng.</h4>
+                    <h4>
+                        Thời gian giao hàng: Từ <span id="ngaynhanhang">@string.Format("{0:dd/MM/yyyy}", @Session["NgayGiaoHang"])</span> đến <span id="ngaynhanhang1">@string.Format("{0:dd/MM/yyyy}", @Session["NgayNhanHang"])</span>
+                      
+                    </h4>
+                   
+                    <br /><br />
+
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <h2>Thông Tin Đơn Hàng</h2>
+    <div class="donhang">
+        <div class="cart-table">
+            <table>
+                <thead>
+                    <tr>
+
+
+                        <th style="display:none;">Mã Sản Phẩm</th>
+                        <th>Hình Ảnh</th>
+                        <th class="p-name">Tên Sản Phẩm</th>
+                        <th>Đơn Giá</th>
+                        <th>Số Lượng</th>
+                       
+                        <th>Tổng Tiền</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @{double TongTien = 0; }
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="display:none;" id="MaSach" name="MaSach" class="p-price first-row">@item.MaSP</td>
+                            <td class="cart-pic first-row"><img src="~/img/sanpham/@item.HinhAnh"></td>
+                            <td class="cart-title first-row"><h5>@item.TenSP</h5> </td>
+                            <td class="p-price first-row">@item.DonGia</td>
+                            <td class="qua-col first-row">
+                                <div class="quantity"><div class="pro-qty"><input type="number" id="@item.MaSP" value="@item.SoLuongMua" disabled></div></div>
+                            </td>
+                            @*<td><a class="primary-btnn" onclick="CapNhat(@item.MaSP)">Cập Nhật</a></td>*@
+                            <td class="total-price first-row">@item.TongTien</td>
+                            @*<td class="close-td first-row"><i class="ti-close" onclick="XoaSP(@item.MaSP)"></i></td>*@
+                        </tr>
+                        TongTien += item.SoLuongMua * item.DonGia;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="thongtin">
+        <h2>Thông Tin Khách Hàng</h2>
+        <form class="w3-container">
+            @foreach (var dg in (IList<DonHang>)ViewData["dondathang"])
+            {
+                <p>
+                    <label>Tên người nhận</label>
+                    <input disabled class="w3-input" type="text" value="@dg.TenNguoiNhan">
+                </p>
+                <p>
+                    <label>Địa chỉ</label>
+                    <input disabled class="w3-input" type="text" value="@dg.DiaChiNhan">
+                </p>
+                <p>
+                    <label>Số điện thoại</label>
+                    <input disabled class="w3-input" type="text" value="@dg.DienThoaiKH">
+                </p>
+
+                <p>
+                    <label>Ngày nhận hàng</label>
+                    <input disabled class="w3-input" type="text" value="@dg.NgayGiaoHang">
+                </p>
+                <p>
+                    <label>Tổng tiền cần thanh toán</label>
+                    <input disabled class="w3-input" type="text" value="@string.Format("{0:0,0}", dg.TongTien) VNĐ">
+
+
+                </p>
+            }
+        </form>
+        <form method="post">
+            @foreach (var dg in (IList<ShopVongTay.Models.DonHang>)ViewData["dondathang"])
+            {
+                @Html.ValidationSummary()
+                <input id="To" style="visibility:hidden" name="To" type="text" value="@dg.EmailNhanHang">
+            }
+            <input id="Subject" style="visibility:hidden" name="Subject" type="text" value="Đơn hàng Vòng Trầm Trung Anh">
+            @foreach (var dg in (IList<ShopVongTay.Models.DonHang>)ViewData["dondathang"])
+            {
+                <textarea style="visibility:hidden" cols="20" id="Body" name="Body" rows="2">Xin chào @dg.TenNguoiNhan
+                Mã số đợn hàng của bạn là: @dg.SoHD
+                Tổng tiền: @dg.TongTien   
+                Sản phẩm đã mua: @foreach (var item in (IList<ShopVongTay.Models.ChiTietDH>)ViewData["tensp"]){    @item.SanPham.TenSP}
+
+               
+            </textarea>
+            }
+
+
+
+            <input style="background-color:#e7ab3c" class="btn btn-animation btn2" type="submit" value="Trang Chủ" />
+        </form>
+       
+
+        @*<a href="@Url.Action("TrangChu","Home")" style="background-color:#795548; color:white" class="btn btn-animation btn2">Trang Chủ</a>*@
+
+    </div>
+</div>

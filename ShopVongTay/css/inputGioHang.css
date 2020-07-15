@@ -1,0 +1,52 @@
+﻿#tennguoinhan {
+    width: 100%;
+    height: 46px;
+    border: 2px solid #ebebeb;
+    margin-bottom: 25px;
+    padding-left: 15px;
+}
+#diachinhanhang {
+    width: 100%;
+    height: 46px;
+    border: 2px solid #ebebeb;
+    margin-bottom: 25px;
+    padding-left: 15px;
+}
+#zip {
+    width: 100%;
+    height: 46px;
+    border: 2px solid #ebebeb;
+    margin-bottom: 25px;
+    padding-left: 15px;
+}
+#email {
+    width: 100%;
+    height: 46px;
+    border: 2px solid #ebebeb;
+    margin-bottom: 25px;
+    padding-left: 15px;
+}
+#dienthoainhanhang {
+    width: 100%;
+    height: 46px;
+    border: 2px solid #ebebeb;
+    margin-bottom: 25px;
+    padding-left: 15px;
+}
+.order-total {
+    border: 2px solid #ebebeb;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 22px;
+    padding-bottom: 35px;
+}
+.col-lg-6 h4 {
+    color: #252525;
+    font-weight: 700;
+    margin-bottom: 30px
+}
+#TongTien h2 {
+    color: #e7ab3c;
+    font-weight: 700;
+    margin-bottom: 30px;
+}

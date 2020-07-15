@@ -1,0 +1,89 @@
+﻿@using ShopVongTay.Models;
+@model List<LoaiTinTuc>
+@{
+    ViewBag.Title = "ThemBangTin";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@*<style>
+    .frmauthor {
+        font-family: serif;
+    }
+
+    .btncreate {
+        background-color: #e7ab3c;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        color: white;
+    }
+
+    table {
+        text-align: center;
+    }
+
+    th {
+        color: white;
+        background-color: #17aa67;
+    }
+</style>*@
+<link href="~/css/CSSAD.css" rel="stylesheet" />
+<form action="" method="post" enctype="multipart/form-data">
+    <div class="frm-ThemBaiViet">
+        <h1 style="border-bottom:1px solid; padding:5px 5px 5px 5px;">Tạo bài viết</h1>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="td1">Tên bài viết:</td>
+                    <td><input type="text" id="TenBaiViet" name="TenBaiViet" placeholder="Nhập tên" required/></td>
+                </tr>
+                <tr>
+                    <td class="td1">Danh mục:</td>
+                    <td>@Html.DropDownList("MaLoaiTinTuc")</td>
+                </tr>
+                <tr>
+                    <td class="td1">Meta Keywords:</td>
+                    <td><textarea id="MetaKeywords" name="MetaKeywords" placeholder="Từ khóa" required></textarea></td>
+                </tr>
+                <tr>
+                    <td class="td1">Meta Description:</td>
+                    <td><textarea id="MetaDescription" name="MetaDescription" placeholder="Mô tả danh mục sách" required></textarea></td>
+                </tr>
+                <tr>
+                    <td class="td1">Title:</td>
+                    <td><input type="text" id="Title" name="Title" placeholder="Tiêu đề" required/></td>
+                </tr>
+                <tr>
+                    <td class="td1">Meta Title:</td>
+                    <td><textarea id="MetaTitle" name="MetaTitle" placeholder="Mo-ta-tieu-de" required></textarea></td>
+                </tr>
+                <tr>
+                    <td class="td1">Ảnh đại diện:</td>
+                    <td><input style="background: none;border: 0;" type="file" name="AnhDaiDien" id="AnhDaiDien" value="Chọn Đường Dẫn Ảnh" /></td>
+                </tr>
+                <tr>
+                    <td class="td1">Mô tả:</td>
+                    <td>
+                        <textarea id="NoiDung" name="NoiDung"></textarea>
+                        <script>
+                            CKEDITOR.replace("NoiDung");
+                        </script>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <div class="XuLi-BaiViet">
+        <a class="btn_back" href="@Url.Action("BangTin","TinMoi")" style="
+    display: inline-block;
+    text-align: center;
+    padding-top: 8px;">Trở lại</a> <input class="btn_Tao" type="submit" value="Tạo" name="Sub-Tao"  id="Sub-Tao" style="display:inline-block;" />
+    </div>
+</form>

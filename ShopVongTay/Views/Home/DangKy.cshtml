@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/DKDN.js"></script>
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <a href="@Url.Action("TrangChu","Home")"><i class="fa fa-home"></i> Trang Chủ</a>
+                    <span>Đăng Ký</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Form Section Begin -->
+<!-- Register Section Begin -->
+<div class="register-login-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="register-form">
+                    <h2>ĐĂNG KÝ THÀNH VIÊN</h2>
+                   
+                    <form action="/Home/DangKy" method="post" name="form1" onsubmit="return matchpass()">
+                        <div class="group-input">
+                            <label for="name">Họ Tên Khách Hàng</label>
+                            <input type="text" name="hoten" id="hoten" required>
+                        </div>
+                        <div class="group-input">
+                            <label for="name">Địa Chỉ</label>
+                            <input type="text" name="diachi" id="diachi" required>
+                        </div>
+                        <div class="group-input">
+                            <label for="username">Tên Đăng Nhập*</label>
+                            <input type="text" name="tendn" id="tendn" required>
+                        </div>
+                        <div class="group-input">
+                            <label for="pass">Mật Khẩu *</label>
+                            <input type="password" name="matkhau" id="matkhau" required>
+                            <span id="passwordloc" style="color:red;"></span>
+                        </div>
+                        <div class="group-input">
+                            <label for="con-pass">Xác Nhận Mật Khẩu *</label>
+                            <input type="password" name="amatkhau" id="amatkhau" required>
+                            <span id="passwordloc1" style="color:red;"></span>
+                        </div>
+                        <div class="group-input">
+                            <label for="username">Email *</label>
+                            <input type="email" name="email" id="email" size="32" minlength="3" maxlength="64" required>
+                        </div>
+                        <input type="submit" id="sub-DangKy"  class="site-btn register-btn" value="Đăng Ký">
+                    </form>
+                    <div class="switch-login">
+                        <a href="@Url.Action("DangNhap","Home")" class="or-login">Đăng Nhập Ngay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Register Form Section End -->
+<script type="text/javascript">
+    function matchpass() {
+        var firstpassword = document.form1.matkhau.value;
+        var secondpassword = document.form1.amatkhau.value;
+        var password = document.form1.matkhau.value;
+
+        if (firstpassword == secondpassword && password.length >= 6 ) {
+            return true;
+        } else {
+            alert("Mật khẩu phải giống nhau !");
+            document.getElementById("passwordloc").innerHTML = "Mật khẩu phải dài ít nhất 6 kí tự";
+            document.getElementById("passwordloc1").innerHTML = "Mật khẩu phải dài ít nhất 6 kí tự";
+            return false;
+        }
+       
+      
+        
+    }
+    
+    
+</script>

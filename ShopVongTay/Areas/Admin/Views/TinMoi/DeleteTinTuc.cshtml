@@ -1,0 +1,51 @@
+﻿@model ShopVongTay.Models.TinTuc
+
+@{
+    ViewBag.Title = "DeleteTinTuc";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+    <div class="w3-container w3-brown">
+        <h2>Xóa Bảng Tin</h2>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Hình Ảnh</th>
+                <th>Loại Tin Tức</th>
+                <th>Tên Bài Viết</th>
+                <th>Ngày Đăng</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img width="15%" src="~/img/sanpham/@Html.DisplayFor(model =>model.AnhDaiDien)" /></td>
+                <td>  @Html.DisplayFor(model => model.LoaiTinTuc.MaLoaiTinTuc)</td>
+
+                <td>
+                    @Html.DisplayFor(model => model.TenBaiViet)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.CapNhat)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+            function xoa() {
+                alert("Xóa sản phẩm thành công!");
+            }
+    </script>
+
+    <a href="@Url.Action("BangTin","TinMoi")" class="btncreate">Quay Lại</a>
+
+    <input type="submit" onclick="xoa()" class="btncreate" style="width:130px;"  value="Xóa" />
+
+}

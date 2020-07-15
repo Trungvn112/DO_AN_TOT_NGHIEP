@@ -1,0 +1,73 @@
+﻿@model ShopVongTay.Models.ADMIN
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="~/css/LayoutAdmin.css" rel="stylesheet" />
+    <link href="~/css/utiladmin.css" rel="stylesheet" />
+    <script>
+        function validateLogin() {
+            var x = document.forms["myForm"]["TenDN"].value;
+            var y = document.forms["myForm"]["MatKhau"].value;
+
+            if (x == "" || y == "") {
+                alert("You need enter Email and Password");
+                return false;
+            }
+        }
+        function disablelogin() {
+            document.getElementById("TenDN").disabled = true;
+            document.getElementById("MatKhau").disabled = true;
+        }
+
+    </script>
+</head>
+<body>
+    
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100">
+                    <div class="login100-form-title" style="background-image: url(../../../../img/vong-tay-phong-thuy-menh-moc-4.jpg);">
+                        <span class="login100-form-title-1">
+                            ADMIN
+                        </span>
+                    </div>
+
+                    <form class="login100-form validate-form" action="#" method="post" name="myForm">
+                        <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+                            <span class="label-input100">Tài Khoản</span>
+                            <input class="input100" type="text" id="TenDN"  data-val="true" name="TenDNAD" placeholder="User" value="">
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+                            <span class="label-input100">Mật Khẩu</span>
+                            <input class="input100" type="password"  id="MatKhau"  data-val="true" name="MatKhauAD" placeholder="Password" value="">
+                            <span class="focus-input100"></span>
+                        </div>
+                        @if (ViewBag.error != null)
+                        {
+                            <p style="color:red">@ViewBag.error</p>
+
+                        }
+
+
+
+                        <div class="container-login100-form-btn">
+                            <button class="login100-form-btn" name="btnlogin" id="btnlogin" onclick="return validateLogin()">
+                                Đăng Nhập
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+</body>
+</html>

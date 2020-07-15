@@ -1,0 +1,201 @@
+﻿@using ShopVongTay.Models
+@model SanPham
+@{
+    ViewBag.Title = "ChiTietSanPham";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/css/custom.css" rel="stylesheet" />
+<link href="~/css/chitietsanpham.css" rel="stylesheet" />
+<!-- Start main Content -->
+<div class="maincontent bg--white pt--80 pb--55">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-12">
+                <div class="wn__single__product">
+                    <div class="row">
+                        <div class="col-lg-6 col-12">
+                            <div class="wn__fotorama__wrapper">
+                                <div class="fotorama wn__fotorama__action" data-nav="thumbs">
+                                    <a href="#"><img src="~/img/sanpham/@Model.HinhAnh" alt=""></a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="product__info__main">
+                                <h1>@Model.TenSP</h1>
+                                <div class="product-reviews-summary d-flex">
+                                    <ul class="rating-summary d-flex">
+                                        <li><i class="zmdi zmdi-star-outline"></i></li>
+                                        <li><i class="zmdi zmdi-star-outline"></i></li>
+                                        <li><i class="zmdi zmdi-star-outline"></i></li>
+                                        <li class="off"><i class="zmdi zmdi-star-outline"></i></li>
+                                        <li class="off"><i class="zmdi zmdi-star-outline"></i></li>
+                                    </ul>
+                                </div>
+                                <h3><strong></strong></h3><h5>@Model.LoaiSP.TenLoai</h5>
+                                <div class="price-box">
+                                    <h3><strong>Giá bán:</strong></h3> <span>@string.Format("{0:0,0}", Model.DonGia) VND</span>
+                                </div>
+                                <h3><strong>Trạng thái:</strong></h3><h5>@Model.TrangThai</h5>
+                                <div class="product__overview">
+                                    <p>@Model.MoTa</p>
+                                   
+                                </div>
+                                <div class="box-tocart d-flex">
+                                    <span>Qty</span>
+                                    <input id="qty" class="input-text qty" name="qty" min="1" value="1" title="Qty" type="number">
+                                    <div class="addtocart__actions">
+                                        <button class="tocart" type="submit" title="Add to Cart" onclick="DatHang(@Model.MaSP)">Thêm Vào Giỏ</button>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product__info__detailed">
+                    <div class="pro_details_nav nav justify-content-start" role="tablist">
+                        <a class="nav-item nav-link active" data-toggle="tab" href="#nav-details" role="tab">Mô Tả</a>
+                        <a class="nav-item nav-link" data-toggle="tab" href="#nav-review" role="tab">Đánh Giá</a>
+                    </div>
+                    <div class="tab__container">
+                        <!-- Start Single Tab Content -->
+                        <div class="pro__tab_label tab-pane fade show active" id="nav-details" role="tabpanel">
+                            <div class="description__attribute">
+                                <p>@Model.MoTa</p>
+                                
+                            </div>
+                        </div>
+                        <!-- End Single Tab Content -->
+                        <!-- Start Single Tab Content -->
+                        <div class="pro__tab_label tab-pane fade" id="nav-review" role="tabpanel">
+                            <div class="review__attribute">
+                                <h1>Customer Reviews</h1>
+                                <h2>Hastech</h2>
+                                <div class="review__ratings__type d-flex">
+                                    <div class="review-ratings">
+                                        <div class="rating-summary d-flex">
+                                            <span>Quality</span>
+                                            <ul class="rating d-flex">
+                                                <li><i class="zmdi zmdi-star"></i></li>
+                                                <li><i class="zmdi zmdi-star"></i></li>
+                                                <li><i class="zmdi zmdi-star"></i></li>
+                                                <li class="off"><i class="zmdi zmdi-star"></i></li>
+                                                <li class="off"><i class="zmdi zmdi-star"></i></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="rating-summary d-flex">
+                                            <span>Price</span>
+                                            <ul class="rating d-flex">
+                                                <li><i class="zmdi zmdi-star"></i></li>
+                                                <li><i class="zmdi zmdi-star"></i></li>
+                                                <li><i class="zmdi zmdi-star"></i></li>
+                                                <li class="off"><i class="zmdi zmdi-star"></i></li>
+                                                <li class="off"><i class="zmdi zmdi-star"></i></li>
+                                            </ul>
+                                        </div>
+                                        <div class="rating-summary d-flex">
+                                            <span>value</span>
+                                            <ul class="rating d-flex">
+                                                <li><i class="zmdi zmdi-star"></i></li>
+                                                <li><i class="zmdi zmdi-star"></i></li>
+                                                <li><i class="zmdi zmdi-star"></i></li>
+                                                <li class="off"><i class="zmdi zmdi-star"></i></li>
+                                                <li class="off"><i class="zmdi zmdi-star"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="review-content">
+                                        <p>Hastech</p>
+                                        <p>Review by Hastech</p>
+                                        <p>Posted on 11/6/2018</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review-fieldset">
+                                <h2>You're reviewing:</h2>
+                                <h3>Chaz Kangeroo Hoodie</h3>
+                                <div class="review-field-ratings">
+                                    <div class="product-review-table">
+                                        <div class="review-field-rating d-flex">
+                                            <span>Quality</span>
+                                            <ul class="rating d-flex">
+                                                <li class="off"><i class="zmdi zmdi-star"></i></li>
+                                                <li class="off"><i class="zmdi zmdi-star"></i></li>
+                                                <li class="off"><i class="zmdi zmdi-star"></i></li>
+                                                <li class="off"><i class="zmdi zmdi-star"></i></li>
+                                                <li class="off"><i class="zmdi zmdi-star"></i></li>
+                                            </ul>
+                                        </div>
+                                        <div class="review-field-rating d-flex">
+                                            <span>Price</span>
+                                            <ul class="rating d-flex">
+                                                <li class="off"><i class="zmdi zmdi-star"></i></li>
+                                                <li class="off"><i class="zmdi zmdi-star"></i></li>
+                                                <li class="off"><i class="zmdi zmdi-star"></i></li>
+                                                <li class="off"><i class="zmdi zmdi-star"></i></li>
+                                                <li class="off"><i class="zmdi zmdi-star"></i></li>
+                                            </ul>
+                                        </div>
+                                        <div class="review-field-rating d-flex">
+                                            <span>Value</span>
+                                            <ul class="rating d-flex">
+                                                <li class="off"><i class="zmdi zmdi-star"></i></li>
+                                                <li class="off"><i class="zmdi zmdi-star"></i></li>
+                                                <li class="off"><i class="zmdi zmdi-star"></i></li>
+                                                <li class="off"><i class="zmdi zmdi-star"></i></li>
+                                                <li class="off"><i class="zmdi zmdi-star"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="review_form_field">
+                                    <div class="input__box">
+                                        <span>Nickname</span>
+                                        <input id="nickname_field" type="text" name="nickname">
+                                    </div>
+                                    <div class="input__box">
+                                        <span>Summary</span>
+                                        <input id="summery_field" type="text" name="summery">
+                                    </div>
+                                    <div class="input__box">
+                                        <span>Đánh Giá</span>
+                                        <textarea name="review"></textarea>
+                                    </div>
+                                    <div class="review-form-actions">
+                                        <button>Submit Review</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Tab Content -->
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-3 col-12 md-mt-40 sm-mt-40">
+                <div class="shop__sidebar">
+                    <aside class="wedget__categories poroduct--cat">
+                        <h3 class="wedget__title">Product Categories</h3>
+                        <ul>
+                            <li><a href="@Url.Action("SanPham","Home")" style="color: red;">Tất Cả Các Sản Phẩm</a></li>
+                            <li><a href="@Url.Action("SanPhamNam","SanPham")">Vòng Tay Nam</a></li>
+                            <li><a href="@Url.Action("SanPhamNu","SanPham")">Vòng Tay Nữ</a></li>
+                            <li><a href="@Url.Action("VongTay108","SanPham")">Vòng Tay 108</a></li>
+                            <li><a href="@Url.Action("VongTayTyHuu","SanPham")">Vòng Tay Tỳ Hưu</a></li>
+                            <li><a href="@Url.Action("VongTayBocVang","SanPham")">Vòng Tay Bọc Vàng</a></li>
+                            <li><a href="@Url.Action("TramHuongChim","SanPham")">Trầm Hương Chìm</a></li>
+                            <li><a href="@Url.Action("PhuKien","SanPham")">Phụ Kiện</a></li>
+                            <li><a href="@Url.Action("NhangTram","SanPham")">Nhang Trầm Hương</a></li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End main Content -->

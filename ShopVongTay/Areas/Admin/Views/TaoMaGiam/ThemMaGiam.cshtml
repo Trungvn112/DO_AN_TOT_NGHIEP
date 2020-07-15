@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "ThemMaGiam";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    .frmauthor {
+        font-family: serif;
+    }
+
+    .btncreate {
+        background-color: #e7ab3c;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        color: white;
+    }
+
+    table {
+        text-align: center;
+    }
+
+    th {
+        color: white;
+        background-color: #17aa67;
+    }
+</style>
+<link href="~/css/CSSAD.css" rel="stylesheet" />
+<script>
+    function validateCreate() {
+        var x = document.forms["myForm"]["name"].value;
+        var y = document.forms["myForm"]["mota"].value;
+        var z = document.forms["myForm"]["Loai"].value;
+        var k = document.forms["myForm"]["SL"].value;
+        var g = document.forms["myForm"]["trangthai"].value;
+        var h = document.forms["myForm"]["gia"].value;
+        var j = document.forms["myForm"]["dvtinh"].value;
+
+        if (x == "" || y == "" || z == "" || g == "" || h == "" || j == "" || k == "" || l == "") {
+            alert("Vui lòng điền đầy đủ thông tin sách trước khi tạo !");
+            return false;
+        }
+    }
+
+</script>
+<h2>Thêm mã giảm giá </h2>
+<hr />
+
+<form action="/Admin/TaoMaGiam/ThemMaGiam" method="post" name="myForm">
+    <div class="context">
+        @*<p style="font-weight:bold;font-size:20px;">Thông tin sản phẩm</p>*@
+        <div class="text_left">
+
+            <br />
+
+
+            <table class="table_A">
+                <tr>
+                    <td>
+
+                        <input type="text" name="name" placeholder="Tên Mã" required>
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td><input type="text" name="mota" placeholder="Giá trị" required /></td>
+                </tr>
+                @*<tr>
+                    <td>
+                        @Html.DropDownList("Loai", (IEnumerable<SelectListItem>)ViewBag.Loai, new { @class = "dropdown" })
+                    </td>
+                </tr>*@
+                @*<tr>
+                        <td> @Html.DropDownList("author", (IEnumerable<SelectListItem>)ViewBag.AuthorList, "Chọn tác giả", new { @class = "dropdown" })</td>
+                    </tr>
+                    <tr>
+                    <tr>
+                        <td>@Html.DropDownList("pub", (IEnumerable<SelectListItem>)ViewBag.PubList, "Chọn nhà xuất bản", new { @class = "dropdown" })</td>
+                    </tr>*@
+                <tr>
+                    <td><input type="text" name="Loai" placeholder="Ngày hết hạn" /></td>
+                </tr>
+                <tr>
+                    @*<td>
+                            <select class="dropdown" name="dvtinh">
+
+                                <option value="Ký">Ký</option>
+                                <option value="Hộp">Hộp</option>
+                                <option value="Máy">Máy</option>
+                                <option value="Túi">Túi</option>
+                            </select>
+                        </td>*@
+                </tr>
+                <tr>
+                    <td><input type="text" name="SL" placeholder="Số lượng" /></td>
+                </tr>
+                <tr>
+                    @*<td>
+                        <select class="dropdown" name="trangthai">
+                           
+                            <option value="Đang Bán">Đang Bán</option>
+                            <option value="Ngưng Bán">Ngưng Bán</option>
+                            <option value="Trưng Bày">Trưng Bày</option>
+                        </select>
+                    </td>*@
+
+                </tr>
+
+            </table>
+            <br />
+
+            <div>
+                <a href="@Url.Action("TaoMa","TaoMaGiam")" class="btncreate">Quay Lại</a>
+
+                <input type="submit" class="btncreate" onclick="return validateCreate()" style="width:165px; background-color:#e7ab3c" value="Thêm Mã" />
+
+
+
+            </div>
+        </div>
+        
+
+    </div>
+</form>

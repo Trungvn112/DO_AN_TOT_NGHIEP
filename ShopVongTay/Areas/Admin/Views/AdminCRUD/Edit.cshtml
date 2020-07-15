@@ -1,0 +1,318 @@
+﻿@model ShopVongTay.Models.SanPham
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link href="~/css/EditSPad.css" rel="stylesheet" />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4 style="font-family:serif">Sửa Thông Tin Sản Phẩm</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MaSP)
+
+
+        <!–---------------------------PHẦN ĐẦU------------------------------–>
+        <div class="all" style="font-family:serif">
+
+
+
+            @*<div class="text">
+                    @Html.EditorFor(model => model.TenSP, new { htmlAttributes = new { @class = "form-control", @style = "display: none" } })
+                    @Html.ValidationMessageFor(model => model.TenSP, "", new { @class = "text-danger" })
+                </div>
+
+
+
+                <div class="col-md-1 col-lg-2">
+                    @Html.EditorFor(model => model.Donvitinh, new { htmlAttributes = new { @class = "form-control", @style = "display: none" } })
+                    @Html.ValidationMessageFor(model => model.Donvitinh, "", new { @class = "text-danger" })
+                </div>*@
+
+
+
+            <!–---------------------------PHẦN HAI------------------------------–>
+
+
+            <div class="two" style="margin-top:0px">
+                <div class="infoBook">
+                    <label style="margin-top:6px; margin-left:10px">Thông Tin Chi Tiết</label>
+                </div>
+
+                <!–---------------------------ROW 2------------------------------–>
+                <div class="row2">
+
+                    <div class="col-md-3 col-lg-2">
+                        <div class="form-group">
+                            <label style="margin-left:10px;" class="control-label">ID</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-2">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.MaSP, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                            @Html.ValidationMessageFor(model => model.MaSP, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3 col-lg-2">
+                        <div class="form-group">
+                            <label style="margin-left:10px;" class="control-label">Tên Sản Phẩm</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-2">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.TenSP, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TenSP, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+
+                <!–---------------------------ROW 3------------------------------–>
+
+
+                <div class="row3">
+                    <div class="col-md-1 col-lg-2">
+                        <div class="form-group">
+                            <label style="margin-left:10px;" class="control-label">Số Lượng</label>
+                        </div>
+                    </div>
+                    <div class="col-md-1 col-lg-2">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.SoLuong, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-1 col-lg-2">
+                        <div class="form-group">
+                            <label style="margin-left:10px;" class="control-label">Giá</label>
+                        </div>
+                    </div>
+                    <div class="col-md-1 col-lg-2">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.DonGia, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DonGia, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <!–---------------------------ROW 4------------------------------–>
+
+                <div class="row4">
+
+
+
+                        
+                    <div class="col-md-1 col-lg-2">
+                        <div class="form-group">
+                            <label style="margin-left:10px;" class="control-label">Ngày Tạo</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-1 col-lg-2">
+                        <div class="form-group">
+                            <div class="input-group date">
+                                @Html.EditorFor(model => model.NgayTao, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.NgayTao, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-1 col-lg-2">
+                        <div class="form-group">
+                            <label style="margin-left:10px;" class="control-label">Trạng Thái</label>
+                        </div>
+                    </div>
+                    <div class="col-md-1 col-lg-2">
+                        <div class="form-group">
+                            <select class="dropdown editdropdown" name="trangthai">
+                                <option value="Đang Bán">@Model.TrangThai</option>
+                                <option value="Đang Bán">Đang Bán</option>
+                                <option value="Ngưng Bán">Ngưng Bán</option>
+                                <option value="Trưng Bày">Trưng Bày</option>
+                            </select>
+
+                            @*@Html.EditorFor(model => model.TrangThai, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TrangThai, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+                </div>
+
+                <!–---------------------------ROW 5------------------------------–>
+
+                <div class="row5">
+                    <div class="col-md-1 col-lg-2">
+                        <div class="form-group">
+                            <label style="margin-left:10px;" class="control-label">Ngày Sửa</label>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-1 col-lg-2">
+                        <div class="form-group">
+
+                            <div class="input-group date">
+                                @Html.EditorFor(model => model.NgayChinhSua, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.NgayChinhSua, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1 col-lg-2">
+                        <div class="form-group">
+                            @*<label class="control-label">unit</label>*@
+
+                        </div>
+                    </div>
+
+
+                    @*<div class="col-md-1 col-lg-2">
+                            <div class="form-group">
+
+                                <div class="input-group date">
+                                    <select class="dropdown editdropdown" name="DonviTinh" style="width:141%">
+                                        <option value="@Model.Donvitinh">@Model.Donvitinh</option>
+                                        <option value="Ký">Ký</option>
+                                        <option value="Hộp">Hộp</option>
+                                        <option value="Máy">Máy</option>
+                                        <option value="Túi">Túi</option>
+                                    </select>
+                                    @Html.EditorFor(model => model.Donvitinh, new { htmlAttributes = new { @class = "form-control"} })
+                                        @Html.ValidationMessageFor(model => model.Donvitinh, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>*@
+
+                    <div class="col-md-1 col-lg-2">
+                        <div class="form-group">
+
+                            <div class="input-group date">
+                                @Html.EditorFor(model => model.MaLoai, new { htmlAttributes = new { @class = "form-control", @style = "display: none" } })
+                                @Html.ValidationMessageFor(model => model.MaLoai, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!–---------------------------SUMMARY------------------------------–>
+                <div class="SMR">
+                    <div class="col-md-1 col-lg-12">
+                        <div class="form-group">
+                            <label style="margin-left:10px;" class="control-label">Mô Tả</label>
+                            <div class="area">
+                                @Html.TextAreaFor(model => model.MoTa, 10, 80, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!–---------------------------IMG------------------------------–>
+                <div class="img" style="height:435px">
+                    <div class="row6">
+                        <div class="col-md-1 col-lg-5">
+                            <div class="form-group">
+                                <label style="margin-left:10px;" class="control-label">Ảnh</label>
+                                @*<div class="choose">
+                                        @*Html.EditorFor(model => model.ImgUrl, new { htmlAttributes = new { @class = "form-control1", @id = "ima", @type = "file" } })
+                                    </div>*@
+                                @*<div class="form-group">
+
+                                        @Html.EditorFor(model => model.ImgUrl, new { htmlAttributes = new { @class = "form-control"} })
+                                        @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                    </div>*@
+                                @*<div class="imgedit" style="background-color: white;width: 250px;padding: 40px 0px;">
+
+                                    </div>
+                                    <div class="textimg">
+                                        @Html.DisplayFor(model => model.ImgUrl)
+                                    </div>*@
+
+                                @section upload
+  {
+                                    <script>
+                                        $(function () {
+                                            //đăng ký sự kiện click nút btnUpload
+                                            $('#btnUpload').click(function () {
+                                                $('#fileUpload').trigger('click');
+
+                                            });
+                                            // Bắt sự kiện change data của file Upload
+                                            $('#fileUpload').change(function () {
+                                                //Kiểm tra trình duyệt có hỗ trợ FormData object không.
+                                                if (window.FormData !== undefined) {
+                                                    //lấy dữ liệu trên fileUpload
+                                                    var fileUpload = $("#fileUpload").get(0);
+                                                    var files = fileUpload.files;
+                                                    //tạo đối tượng formdata
+                                                    var formData = new FormData();
+                                                    //đưa dữ liệu vào form
+                                                    formData.append('file', files[0]);
+                                                    $.ajax(
+                                                        {
+                                                            type: 'POST',
+                                                            url: '/AdminCRUD/UploadEdit',
+                                                            contentType: false,
+                                                            processData: false,
+                                                            data: formData,
+                                                            success: function (urlImage) {
+                                                                $('#pictureUpload').attr('src', "/img/sanpham/" + urlImage);
+                                                                $('#picture').val(urlImage);
+
+                                                            },
+                                                            error: function (err) {
+                                                                alert('co loi khi upload:' + err.statusText);
+                                                            }
+                                                        });
+
+                                                }
+                                            });
+                                        });
+                                    </script>
+
+                                }
+                                <div class="from-inline">
+                                    @Html.EditorFor(model => model.HinhAnh, new { htmlAttributes = new { @class = "form-control", id = "picture", name = "picture" } })
+                                    @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
+
+                                    <input type="text" name="picture" id="picture" style="display:none;" />
+                                    <input type="file" id="fileUpload" name="fileUpload" style="display:none;" />
+                                    <input type="button" id="btnUpload" value="Chọn Ảnh" class="btn_Choose" />
+                                </div>
+                                <div class="imgEdit">
+                                    <img src="~/img/sanpham/@ViewBag.imgurl" width="250px" name="ImgUrl" id="pictureUpload" />
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <div class="from-inline">
+                                <input type="text" name="picture" id="picture" style="display:none;" />
+
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <a href="@Url.Action("Index","AdminCRUD")" style="width:130px; background-color:#e7ab3c" class="btncreate">Quay Lại</a>
+
+                    <input type="submit" class="btncreate" style="width:130px; background-color:#e7ab3c" value="Lưu" />
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+}
+

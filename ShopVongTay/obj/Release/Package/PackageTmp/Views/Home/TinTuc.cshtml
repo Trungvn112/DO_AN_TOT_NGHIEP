@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "TinTuc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <a href="@Url.Action("TrangChu","Home")"><i class="fa fa-home"></i> Trang Chủ</a>
+                    <span>Tin Tức</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Section Begin -->
+<!-- Blog Section Begin -->
+<section class="blog-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1">
+                <div class="blog-sidebar">
+                    <div class="search-form">
+                        <h4>Tìm Kiếm</h4>
+                        <form action="#">
+                            <input type="text" placeholder="Search . . .  ">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    <div class="blog-catagory">
+                        <h4>Danh Mục</h4>
+                        <ul>
+                            <li><a href="#">Tinh dầu Trầm hương</a></li>
+                            <li><a href="#">Nhang Trầm</a></li>
+                            <li><a href="#">Vòng tay Trầm</a></li>
+                            <li><a href="#">Trầm nụ</a></li>
+                        </ul>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+<!-- Blog Section End -->

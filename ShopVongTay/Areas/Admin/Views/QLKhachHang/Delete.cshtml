@@ -1,0 +1,86 @@
+﻿@model ShopVongTay.Models.KhachHang
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<style>
+    .frmauthor {
+        font-family: serif;
+    }
+
+    .btncreate {
+        background-color: #e7ab3c;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        color: white;
+    }
+
+    table {
+        text-align: center;
+    }
+
+    th {
+        color: white;
+        background-color: #e7ab3c;
+    }
+</style>
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+    <div class="w3-container w3-brown">
+        <h2>Xóa Thông Tin Khách Hàng</h2>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Họ Tên</th>
+                <th>Địa Chỉ</th>
+                <th>Số Điện Thoại</th>
+                <th>Tên ĐN</th>
+                <th>Mật Khẩu</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.HoTenKH)
+                </td>
+                <td>  @Html.DisplayFor(model => model.DiaChiKH)</td>
+
+                <td>
+                    @Html.DisplayFor(model => model.SoDienThoaiKH)
+                </td>
+                <td>@Html.DisplayFor(model => model.TenDN)</td>
+                <td>
+                    @Html.DisplayFor(model => model.MatKhau)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Email)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        function xoa() {
+            alert("Xóa thành công!");
+        }
+    </script>
+
+    <a href="@Url.Action("KhachHang","QLKhachHang")" class="btncreate">Quay Lại</a>
+
+    <input type="submit" onclick="xoa()" class="btncreate" style="width:130px; background-color:#e7ab3c" value="Xóa" />
+
+}
+
+

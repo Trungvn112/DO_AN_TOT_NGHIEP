@@ -1,0 +1,169 @@
+﻿@using ShopVongTay.Models
+@model PagedList.IPagedList<ShopVongTay.Models.KhachHang>
+@using PagedList.Mvc
+
+
+@{
+    ViewBag.Title = "KhachHang";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link href="~/css/CSSAD.css" rel="stylesheet" />
+<style>
+    .frmauthor {
+        font-family: serif;
+    }
+
+    .btncreate {
+        background-color: red;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        color: white;
+    }
+
+    table {
+        text-align: center;
+    }
+
+    th {
+        color: white;
+        background-color: #17aa67;
+    }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+@*<p>Danh Sách Sản Phẩm</p>
+    <hr />*@
+<body>
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+
+                <div class="row" style="padding-top:10px">
+                    <div class="col-sm-4">
+
+                        <div class="show-entries">
+                            @using (Html.BeginForm("KhachHang", "QLKhachHang", FormMethod.Get))
+                            {
+                                <p>
+                                    Hiển thị @Html.DropDownList("size", (List<SelectListItem>)ViewBag.size, new { @onchange = "this.form.submit();" })
+                                    @Html.Hidden("page", (object)ViewBag.page)
+                                    @Html.Hidden("sortProperty", (object)ViewBag.sortProperty)
+                                    @Html.Hidden("sortOrder", (object)ViewBag.sortOrder)
+                                    @Html.Hidden("searchString", (object)ViewBag.searchValue)
+                                </p>
+                                @*<a class="themsach" href="@Url.Action("CreateSP","AdminCRUD")">Thêm Sản Phẩm</a>*@
+                            }
+                        </div>
+
+                    </div>
+
+
+                    <div class="search-box">
+                        @*<div class="input-group">
+
+                                @using (Html.BeginForm("Index", "AdminCRUD", FormMethod.Get))
+                                {
+
+                                    @Html.TextBox("searchString", (string)ViewBag.searchValue, new { @class = "form-control", @placeholder = "Search" }) <input type="submit" value="Tìm kiếm" />
+                                }
+
+                            </div>*@
+
+                        @*<form action="/Admin/AdminCRUD/Index" method="get" class="formsearch">
+                                <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+                                <input class="" id="searchString" name="searchString" placeholder="Search" type="search">
+                            </form>*@
+
+                    </div>
+
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Mã </th>
+                        <th>Tên</th>
+
+                        <th>Địa Chỉ</th>
+                        <th>
+                            Số ĐT
+                            <i></i>
+                        </th>
+                        <th>
+                            Tên ĐN
+                        </th>
+                        <th>
+                            Mật Khẩu
+                        </th>
+                        <th>
+                            Giới Tính
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Xử Lí
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+
+                        <td>@item.MaKH</td>
+                        <td>@item.HoTenKH</td>
+
+                        <td>
+                            @item.DiaChiKH
+                        </td>
+                        <td>@item.SoDienThoaiKH</td>
+                        <td>@item.TenDN</td>
+                        <td>@item.MatKhau</td>
+                        <td>@item.GioiTinh</td>
+                        <td>@item.Email</td>
+                        <td>
+                            <button type="button" rel="tooltip" class="btn btn-info btn-round btn-just-icon btn-sm" data-original-title="" title="">
+                                <a href="@Url.Action("Edit", "QLKhachHang", new { id = item.MaKH })">
+                                    <i class="material-icons">edit</i>
+                                </a>
+                            </button>
+
+
+                            <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-just-icon btn-sm" data-original-title="" title="">
+                                <a href="@Url.Action("Delete", "QLKhachHang", new { id = item.MaKH })">
+                                    <i class="material-icons">
+                                        close
+                                    </i>
+                                </a>
+                            </button>
+                        </td>
+                    </tr>
+                    }
+
+
+
+                </tbody>
+            </table>
+            <div class="clearfix">
+                <div class="hint-text">Showing @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) out of @Model.PageCount entries</div>
+                <ul class="pagination">
+
+                    <li class="page-item">@Html.PagedListPager(Model, page => Url.Action("KhachHang", new { page, size = ViewBag.currentSize }))</li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+

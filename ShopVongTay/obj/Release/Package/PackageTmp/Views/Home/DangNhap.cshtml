@@ -1,0 +1,74 @@
+﻿@model ShopVongTay.Models.KhachHang
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <a href="@Url.Action("TrangChu","Home")"><i class="fa fa-home"></i> Trang Chủ</a>
+                    <span>Đăng Nhập</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Form Section Begin -->
+<!-- Register Section Begin -->
+<div class="register-login-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="login-form">
+                    <h2>ĐĂNG NHẬP</h2>
+                    <form action="#" method="post" name="myForm">
+
+                        <div class="group-input">
+                            <label for="username">Tên đăng nhập *</label>
+                            <input class="input-validation-error text-box single-line" data-val="true" id="TenDN" name="TenDN" placeholder="Email" type="text" value="">
+                        </div>
+                        <div class="group-input">
+                            <label for="pass">Mật Khẩu *</label>
+                            <input type="password" class="input-validation-error text-box single-line" data-val="true" id="MatKhau" name="MatKhau" placeholder="Password" value="">
+                        </div>
+                        @if (ViewBag.error != null)
+                        {
+                            <p style="color:red">@ViewBag.error</p>
+
+                        }
+                        
+
+                        <button class="site-btn login-btn" id="btnlogin" onclick="return validateLogin()">Đăng Nhập</button>
+                    </form>
+                    <div class="switch-login">
+                        <a href="@Url.Action("DangKy","Home")" class="or-login">Tạo Tài Khoản Mới</a>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+</div>
+<!-- Register Form Section End -->
+<script>
+    function validateLogin() {
+        var x = document.forms["myForm"]["TenDN"].value;
+        var y = document.forms["myForm"]["MatKhau"].value;
+
+        if (x == "" || y == "") {
+            alert("You need enter Email and Password");
+            return false;
+        }
+    }
+    function disablelogin() {
+        document.getElementById("TenDN").disabled = true;
+        document.getElementById("MatKhau").disabled = true;
+    }
+
+</script>

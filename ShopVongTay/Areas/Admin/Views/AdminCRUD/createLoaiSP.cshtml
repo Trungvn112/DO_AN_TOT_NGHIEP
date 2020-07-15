@@ -1,0 +1,129 @@
+﻿@using ShopVongTay.Models
+@model List<LoaiSP>
+
+@{
+    ViewBag.Title = "createLoaiSP";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<link href="~/css/CSSAD.css" rel="stylesheet" />
+<style>
+    .frmauthor {
+        font-family: serif;
+    }
+
+    .btncreate {
+        background-color: red;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        color: white;
+    }
+
+    table {
+        text-align: center;
+    }
+
+    th {
+        color: white;
+        background-color: #17aa67;
+    }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+    function validateCreate() {
+        var x = document.forms["myForm"]["AuthorName"].value;
+        var y = document.forms["myForm"]["History"].value;
+
+        if (x == "" || y == "") {
+            alert("Vui lòng điền đầy đủ thông tin sách trước khi tạo !");
+            return false;
+        }
+    }
+
+</script>
+@*<h4 style="font-family:serif"> Loại Sản Phẩm</h4>
+    <hr />*@
+<form action="/Admin/AdminCRUD/createLoaiSP" method="post" name="myForm">
+    <form class="frmauthor">
+        <div class="context">
+            <div class="text_left_author">
+                <p style="font-weight:bold;font-size:20px; font-family:serif">Tạo Loại Sản Phẩm</p>
+                <table class="table_Author">
+                    <tr>
+                        <td>
+
+                            <input type="text" name="TenLoaiSP" placeholder="Tên ">
+
+                        </td>
+                        <td>  <input type="submit" class="btncreate" onclick="return validateCreate()" style="width:130px; background-color:#e7ab3c" value="Thêm" /></td>
+
+                    </tr>
+
+                </table>
+                <br />
+
+
+
+
+                <div>
+                    @*<a href="@Url.Action("Index","AdminCRUD")" class="btncreate">Quay Lại</a>*@
+
+                  
+
+
+
+                </div>
+            </div>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên Loại Sản Phẩm</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>@item.MaLoai</td>
+                            <td>@item.TenLoai</td>
+                            <td>
+                                <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-just-icon btn-sm" data-original-title="" title="">
+                                    <a href="@Url.Action("DeleteLoai", "AdminCRUD", new { id = item.MaLoai })">
+                                        <i class="material-icons">
+                                            close
+                                        </i>
+                                    </a>
+                                </button>
+                            </td>
+
+                        </tr>
+
+                    }
+
+                </tbody>
+            </table>
+            <div class="text_right_author">
+
+            </div>
+        </div>
+    </form>
+
+
+
+</form>

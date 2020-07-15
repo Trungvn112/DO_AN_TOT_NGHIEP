@@ -1,0 +1,66 @@
+﻿@using ShopVongTay.Models
+@model List<ChiTietDH>
+@{
+    ViewBag.Title = "EditHoaDon";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link href="~/css/CSSAD.css" rel="stylesheet" />
+<style>
+    .frmauthor {
+        font-family: serif;
+    }
+
+    .btncreate {
+        background-color: #e7ab3c;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        color: white;
+    }
+
+    table {
+        text-align: center;
+    }
+
+    th {
+        color: white;
+        background-color: #e7ab3c;
+    }
+</style>
+<div class="Cart-info">
+    <h4>Tổng tiền hóa đơn: <span style="color:red">@string.Format("{0:0,0}", ViewBag.trigia)</span> VNĐ</h4>
+    <br />
+    <h5>Thông tin hóa đơn</h5>
+    <table class="table table-bordered">
+        <thead>
+            <tr style="background-color:#e7ab3c;">
+                <td>Tên Sản Phẩm</td>
+                <td>Hình Ảnh</td>
+                <td>Số Lượng</td>
+                <td>Thành Tiền</td>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.SanPham.TenSP</td>
+                    <td><a href="~/ViewSanPham/ChiTietSanPham?MaSp=@item.MaSP"><img src="~/img/sanpham/@item.SanPham.HinhAnh" /></a></td>
+                    <td><p>@item.SoLuong</p></td>
+                    <td><span id="DonGia"> @string.Format("{0:0,0}", item.ThanhTien) VNĐ</span></td>
+                </tr>
+
+
+            }
+
+        </tbody>
+    </table>
+
+</div>

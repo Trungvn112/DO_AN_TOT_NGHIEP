@@ -1,0 +1,502 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Fashi Template">
+    <meta name="keywords" content="Fashi, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewBag.Title Shop Vòng Tay</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/themify-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/slicknav.min.css" type="text/css">
+    <link href="~/css/GioiThieu.css" rel="stylesheet" />
+
+    <link href="~/css/GioiThieu_1.css" rel="stylesheet" />
+
+
+</head>
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="header-top">
+            <div class="container">
+                <div class="ht-left">
+                    <div class="mail-service">
+                        <i class=" fa fa-envelope"></i>
+                        trungpham.pt36@gmail.com
+                    </div>
+                    <div class="phone-service">
+                        <i class=" fa fa-phone"></i>
+                        +84 969052509
+                    </div>
+                </div>
+                <div class="ht-right">
+                    <a href="   " class="login-panel"><i class="fa fa-user"></i>Đăng Nhập</a>
+                    <div class="lan-selector">
+                        <select class="language_drop" name="countries" id="countries" style="width:300px;">
+                            <option value='yt' data-image="/img/cờ.jpg" data-imagecss="flag yt"
+                                    data-title="Việt Nam">
+                                Việt Nam
+                            </option>
+                            <option value='yu' data-image="/img/flag-1.jpg" data-imagecss="flag yu"
+                                    data-title="English">
+                                English
+                            </option>
+                        </select>
+                    </div>
+                    <div class="top-social">
+                        <a href="#"><i class="ti-facebook"></i></a>
+                        <a href="#"><i class="ti-twitter-alt"></i></a>
+                        <a href="#"><i class="ti-linkedin"></i></a>
+                        <a href="#"><i class="ti-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="inner-header">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2">
+                        <div class="logo">
+                            <a href="@Url.Action("TrangChu","Home")">
+                                <img src="~/img/s2.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-7">
+                        <div class="advanced-search">
+                            <button type="button" class="category-btn">Tìm sản phẩm</button>
+                            <div class="input-group">
+                                <input type="text" placeholder="Nhập vào">
+                                <button type="button"><i class="ti-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 text-right col-md-3">
+                        <ul class="nav-right">
+
+                            <li class="cart-icon">
+                                <a href="#">
+                                    <i class="icon_bag_alt"></i>
+                                    <span>3</span>
+                                </a>
+                                <div class="cart-hover">
+                                    <div class="select-items">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="si-pic"><img src="img/select-product-1.jpg" alt=""></td>
+                                                    <td class="si-text">
+                                                        <div class="product-selected">
+                                                            <p>$60.00 x 1</p>
+                                                            <h6>Kabino Bedside Table</h6>
+                                                        </div>
+                                                    </td>
+                                                    <td class="si-close">
+                                                        <i class="ti-close"></i>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="si-pic"><img src="img/select-product-2.jpg" alt=""></td>
+                                                    <td class="si-text">
+                                                        <div class="product-selected">
+                                                            <p>$60.00 x 1</p>
+                                                            <h6>Kabino Bedside Table</h6>
+                                                        </div>
+                                                    </td>
+                                                    <td class="si-close">
+                                                        <i class="ti-close"></i>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="select-total">
+                                        <span>total:</span>
+                                        <h5>$120.00</h5>
+                                    </div>
+                                    <div class="select-button">
+                                        <a href="@Url.Action("GioHang","GioHang")" class="primary-btn view-card">Xem Giỏ Hang</a>
+                                        <a href="@Url.Action("ThanhToan","GioHang")" class="primary-btn checkout-btn">Thanh Toán</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="cart-price">$0</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-item">
+            <div class="container">
+                <div class="nav-depart">
+                    <div class="depart-btn">
+                        <i class="ti-menu"></i>
+                        <span>Danh mục sản phẩm</span>
+                        <ul class="depart-hover">
+                            <li class="active"><a href="#">Nhang Trầm Hương</a></li>
+                            <li><a href="#">Phụ Kiện Trầm Hương</a></li>
+                            <li><a href="#">Trầm Hương Chìm</a></li>
+                            <li><a href="#">Vòng Tay 108</a></li>
+                            <li><a href="#">Vòng Tay Bọc Vàng</a></li>
+                            <li><a href="#">Vòng Tay Tỳ Hưu</a></li>
+                            <li><a href="#">Vòng Tay Nam</a></li>
+                            <li><a href="#">Vòng Tay Nữ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <nav class="nav-menu mobile-menu">
+                    <ul>
+                        <li class="active"><a href="@Url.Action("TrangChu","Home")">Trang Chủ</a></li>
+                        <li><a href="@Url.Action("GioiThieu","Home")">Giới Thiệu</a></li>
+                        <li>
+                            <a href="@Url.Action("SanPham","Home")">Sản Phẩm</a>
+                            <ul class="dropdown">
+                                <li><a href="@Url.Action("SanPhamNam","SanPham")">Vòng Tay Nam</a></li>
+                                <li><a href="@Url.Action("SanPhamNu","SanPham")">Vòng Tay Nữ</a></li>
+                                <li><a href="@Url.Action("NhangTram","SanPham")">Nhang Trầm</a></li>
+                                <li><a href="@Url.Action("PhuKien","SanPham")">Phụ Kiện</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./blog.html">Tin Tức</a></li>
+                        <li><a href="./contact.html">Liên Hệ</a></li>
+                        <li>
+                            <a href="#">Trang</a>
+                            <ul class="dropdown">
+                                <li><a href="./blog-details.html">Blog Details</a></li>
+                                <li><a href="./shopping-cart.html">Shopping Cart</a></li>
+                                <li><a href="./check-out.html">Checkout</a></li>
+                                <li><a href="./faq.html">Faq</a></li>
+                                <li><a href="./register.html">Register</a></li>
+                                <li><a href="./login.html">Login</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <div id="mobile-menu-wrap"></div>
+            </div>
+        </div>
+    </header>
+    <!-- Header 2 Begin -->
+    <header id="header">
+        <div class="intro">
+            <div class="overlay">
+                <div class="container">
+                    <div class="row">
+                        <div class="intro-text">
+                            <h1>Agarwood</h1>
+                            <p>Liên hệ: 0933348368</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Features Section -->
+    <div id="features" class="text-center">
+        <div class="container">
+            <div class="section-title">
+                <h2>NỔI BẬT</h2>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                    <div class="features-item">
+                        <a href="@Url.Action("SanPham","Home")"><h3>Vòng tay nam</h3></a>
+                        <img src="~/Img/Vòng-tay-trầm-hương-thiên-mộc-hương-2.jpg" class="img-responsive" alt="">
+                        <p>Vòng tay trầm hương nam "đẳng cấp cho quý ông thành đạt".</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="features-item">
+                        <a href="@Url.Action("SanPham","Home")"><h3>Vòng tay nữ</h3></a>
+                        <img src="~/Img/Vòng-tay-trầm-hương-thiên-mộc-hương.jpg" class="img-responsive" alt="">
+                        <p>Vòng tay trầm hương nữ "tỏa sáng năng tầm phụ nữ Việt".</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="features-item">
+                        <a href="@Url.Action("SanPham","Home")"><h3>Phụ kiện trầm hương</h3></a>
+                        <img src="~/Img/nhang-cây--300x300.jpg" class="img-responsive" alt="">
+                        <p>Sản vật vô giá trong đời sống tinh thần và sức khỏe người Việt.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About Section -->
+    <div id="about">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-md-6 about-img"> </div>
+                <div class="col-xs-12 col-md-3 col-md-offset-1">
+                    <div class="about-text">
+                        <div class="section-title">
+                            <h2>Câu chuyện thương hiệu trầm hương</h2>
+                        </div>
+                        <p>Trầm Hương sinh ra từ vết thương trên thân cây gió bầu.Trải qua nhiều năm tháng “ăn nắng ăn gió” mới hình thành nên Trầm. Quý giá hơn, không phải cây nào cũng có Trầm, phải 1000 cây mới tìm được một cây có trầm…</p>
+                        <p>Thời gian tích Trầm càng lâu năm, tức tuổi Trầm càng nhiều thì càng quý giá. Nhiều người tin rằng Trầm Hương hấp thụ linh khí của trời đất, tinh hoa của rừng núi nên sẽ bảo vệ và mang lại may mắn cho người đeo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Restaurant Menu Section -->
+    <div id="restaurant-menu">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>Danh sách sản phẩm</h2>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="menu-section">
+                        <h2 class="menu-section-title">Vòng tay nam</h2>
+                        @*<div class="menu-item">
+                                <div class="menu-item-name">Tortellini Skewers</div>
+                                <div class="menu-item-price"> $9 </div>
+                                <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-name">Fried Ravioli</div>
+                                <div class="menu-item-price"> $7 </div>
+                                <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-name">Wild Mushroom Arancini</div>
+                                <div class="menu-item-price"> $9 </div>
+                                <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-name">Mozzarella Sticks</div>
+                                <div class="menu-item-price"> $10 </div>
+                                <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
+                            </div>*@
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="menu-section">
+                        <h2 class="menu-section-title">Vòng tay nữ</h2>
+                        @*<div class="menu-item">
+                                <div class="menu-item-name">Roast Stuffed Chicken</div>
+                                <div class="menu-item-price"> $18 </div>
+                                <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-name">Chicken & Mushroom Pasta</div>
+                                <div class="menu-item-price"> $20 </div>
+                                <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-name">Beef Lasagne</div>
+                                <div class="menu-item-price"> $14 </div>
+                                <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-name">Chicken Goujons</div>
+                                <div class="menu-item-price"> $19 </div>
+                                <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="menu-section">
+                        <h2 class="menu-section-title">Phụ kiện </h2>
+                        @*<div class="menu-item">
+                                <div class="menu-item-name">Sesame-Ginger Beef</div>
+                                <div class="menu-item-price"> $15 </div>
+                                <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-name">Crispy Fried Chicken</div>
+                                <div class="menu-item-price"> $17 </div>
+                                <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-name">Mongolian Shrimp & Broccoli</div>
+                                <div class="menu-item-price"> $18 </div>
+                                <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam.. </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-name">Spicy Coconut Salmon</div>
+                                <div class="menu-item-price"> $20 </div>
+                                <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
+                            </div>*@
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="menu-section">
+                        <h2 class="menu-section-title">Nhang trầm</h2>
+                        @*<div class="menu-item">
+                                <div class="menu-item-name">Chocolate Mud Cake</div>
+                                <div class="menu-item-price"> $11 </div>
+                                <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-name">Bourbon-Pecan Tart</div>
+                                <div class="menu-item-price"> $14 </div>
+                                <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-name">Texas Sheet Cake</div>
+                                <div class="menu-item-price"> $15 </div>
+                                <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-name">Vanilla Cheesecake</div>
+                                <div class="menu-item-price"> $18 </div>
+                                <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Gallery Section -->
+    <div id="gallery">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <div class="gallery-item"> <img src="~/Img/" class="img-responsive" alt=""></div>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <div class="gallery-item"> <img src="~/Img/Untitled-1.jpg" class="img-responsive" alt=""></div>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <div class="gallery-item"> <img src="~/Img/.jpg" class="img-responsive" alt=""></div>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <div class="gallery-item"> <img src="~/Img/Untitled-3.jpg" class="img-responsive" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team Section -->
+    <div id="team">
+        <div class="container">
+            <div id="row">
+                <div class="col-md-6">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="section-title">
+                            <h2>ĐÁP ỨNG CỦA CHÚNG TÔI</h2>
+                        </div>
+                        <p>Trầm khi được mang về, qua bàn tay khéo léo của những nghệ nhân chế tác ở làng Thuỷ Xuân trở thành những hạt trầm bóng, đẹp và thoảng hương quyến rũ.</p>
+                        <p>Từ những khối Trầm Hương sần sùi thô ráp trở thành một chiếc vòng hoàn chỉnh là cả một quá trình tỉ mỉ, công phu và đầy tâm huyết đến từ những nghệ nhân của Agarwood.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="team-img"><img src="~/img/bia3.jpg" alt="..."></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact Section -->
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="footer-left">
+                        <div class="footer-logo">
+                            <a href="#"><img src="~/img/logofooter.png" alt=""></a>
+                        </div>
+                        <ul>
+                            <li>SHOWROOM HỒ CHÍ MINH</li>
+                            <li>71 Nguyễn Khắc Nhu, P. Cô Giang, Quận 1, Tp.HCM</li>
+                            <li>Giờ mở cửa: ( 8h00 am -22h00 pm )</li>
+                            <li>Hotline: 0933348368</li>
+                        </ul>
+                        <div class="footer-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 offset-lg-1">
+                    <div class="footer-widget">
+                        <h5>Về Chúng Tôi</h5>
+                        <ul>
+                            <li><a href="#">Giới Thiệu</a></li>
+                            <li><a href="#">Tin Tức</a></li>
+                            <li><a href="#">Liên Hệ</a></li>
+                            <li><a href="#">Dịch Vụ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="footer-widget">
+                        <h5>Bộ Sưu Tập</h5>
+                        <ul>
+                            <li><a href="#">Vòng Tay Nam</a></li>
+                            <li><a href="#">Vòng Tay Nữ</a></li>
+                            <li><a href="#">Nhang Trầm</a></li>
+                            <li><a href="#">Phụ Kiện</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="newslatter-item">
+                        <h5>Gửi Tin Cho Chúng Tôi</h5>
+                        <p>Cập nhật E-mail về cửa hàng để nhận các ưu đãi đặc biệt của chúng tôi và .</p>
+                        <form action="#" class="subscribe-form">
+                            <input type="text" placeholder="Nhập Mail">
+                            <button type="button">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-reserved">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyright-text">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script>  by <a href="https://colorlib.com" target="_blank">Agarwood</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </div>
+                        <div class="payment-pic">
+                            <img src="~/img/payment-method.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+    <
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery-ui.min.js"></script>
+    <script src="~/js/jquery.countdown.min.js"></script>
+    <script src="~/js/jquery.nice-select.min.js"></script>
+    <script src="~/js/jquery.zoom.min.js"></script>
+    <script src="~/js/jquery.dd.min.js"></script>
+    <script src="~/js/jquery.slicknav.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/main.js"></script>
+</body>
+</html>

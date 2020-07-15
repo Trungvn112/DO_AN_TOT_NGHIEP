@@ -1,0 +1,218 @@
+﻿
+.sanpham {
+    margin-bottom: 26px;
+    position: relative;
+    border: 1px solid #e1e1e1;
+    width: 31%;
+    display: inline-block;
+    background-color: white;
+    margin-top: 1rem;
+    margin-right: .8rem;
+}
+
+    .sanpham:hover .pi-pic .icon {
+        top: 15px;
+        opacity: 1;
+    }
+
+    .sanpham:hover .pi-pic ul {
+        bottom: 0;
+    }
+
+    .sanpham .pi-pic {
+        overflow: hidden;
+        position: relative;
+    }
+
+        .sanpham .pi-pic img {
+            min-width: 100%;
+           
+        }
+
+        .sanpham .pi-pic .sale {
+            color: #ffffff;
+            font-size: 10px;
+            background: #76BC42;
+            position: absolute;
+            left: 0;
+            top: 20px;
+            padding: 5px 10px;
+            text-transform: uppercase;
+        }
+
+            .sanpham .pi-pic .sale.pp-sale {
+                background: #e7ab3c;
+            }
+
+        .sanpham .pi-pic .icon {
+            font-size: 20px;
+            color: #fff;
+            position: absolute;
+            right: 21px;
+            top: -15px;
+            cursor: pointer;
+            -webkit-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+            opacity: 0;
+        }
+
+        .sanpham .pi-pic ul {
+            position: absolute;
+            left: 0;
+            bottom: -52px;
+            -webkit-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+            text-align: center;
+            width: 100%;
+        }
+
+            .sanpham .pi-pic ul li {
+                list-style: none;
+                display: inline-block;
+                background: #ffffff;
+            }
+
+                .sanpham .pi-pic ul li.w-icon.active a {
+                    background: #e7ab3c;
+                    color: #ffffff;
+                }
+
+                .sanpham .pi-pic ul li a {
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: #252525;
+                    display: block;
+                    padding: 16px 18px 12px 19px;
+                }
+
+    .sanpham .pi-text {
+        text-align: center;
+        padding-top: 26px;
+    }
+
+        .sanpham.pi-text .catagory-name {
+            font-size: 10px;
+            color: #b2b2b2;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .sanpham .pi-text a {
+            display: block;
+        }
+
+            .sanpham .pi-text a h5 {
+                color: #252525;
+            }
+
+        .sanpham .pi-text .product-price {
+            color: #e7ab3c;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+            .sanpham .pi-text .product-price span {
+                font-size: 14px;
+                font-weight: 400;
+                color: #b2b2b2;
+                text-decoration: line-through;
+            }
+.sanpham .pi-text .catagory-name {
+    font-size: 10px;
+    color: #b2b2b2;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.pagination {
+    float: right;
+    margin: 0 0 5px;
+}
+a:not([href]):not([tabindex]) {
+    color: white;
+    text-decoration: none;
+    
+}
+    .pagination li a {
+        border: none;
+        font-size: 13px;
+        min-width: 30px;
+        min-height: 30px;
+        padding: 5px 10px;
+        color: #999;
+        margin: 0 2px;
+        line-height: 30px;
+        border-radius: 5px !important;
+        text-align: center;
+         background-color: #e7ab3c;
+    }
+
+        .pagination li a:hover {
+            color: #666;
+        }
+
+    .pagination li.a {
+        background: #03A9F4;
+    }
+
+    .pagination li.active a:hover {
+        background: #0397d6;
+    }
+
+    .pagination li.active a:focus {
+        background: red;
+    }
+
+    .pagination li.disabled i {
+        color: #ccc;
+    }
+
+    .pagination li i {
+        font-size: 16px;
+        padding-top: 6px
+    }
+
+.hint-text {
+    float: left;
+    margin-top: 10px;
+    font-size: 13px;
+}
+.loc {
+    display: inline-block;
+    vertical-align: top;
+    padding-right: 10px;
+    line-height: 40px;
+}
+.loc label{
+    padding-right:30px;
+}
+    .loc a {
+        border: solid 1px deepskyblue;
+        color: deepskyblue;
+        padding: 0px 31px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        /* margin: 4px 2px; */
+        cursor: pointer;
+        box-shadow: 1px 1px 5px -1px;
+        display: inline-block;
+    }
+
+.breadcrumb1 {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    /* padding: .75rem 1rem; */
+    margin-bottom: 1rem;
+    list-style: none;
+    /*background-color: #e9ecef;*/
+    border-radius: .25rem;
+}

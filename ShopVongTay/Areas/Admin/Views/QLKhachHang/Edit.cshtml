@@ -1,0 +1,58 @@
+﻿@model ShopVongTay.Models.KhachHang
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link href="~/css/editkhachhang.css" rel="stylesheet" />
+@using (Html.BeginForm())
+{
+    <div class="content-edit" style="margin-left:100px;">
+
+        @Html.AntiForgeryToken()
+        <h4 style="font-family:serif; margin-left:-48px">Sửa Thông Tin Khách Hàng</h4>
+     
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MaKH)
+
+
+        @*@Html.EditorFor(model => model.MaKH, new { htmlAttributes = new { @class = "form-control", @style = "display: none" } })
+        @Html.ValidationMessageFor(model => model.MaKH, "", new { @class = "text-danger" })*@
+
+        @Html.EditorFor(model => model.MaKH, new { htmlAttributes = new { @class = "form-control", @style = "display: none" } })
+        @Html.ValidationMessageFor(model => model.MaKH, "", new { @class = "text-danger" })
+
+        <div class="right">
+            <label class="control-label">Tên Khách Hàng </label>   @Html.EditorFor(model => model.HoTenKH, new { htmlAttributes = new { @class = "form-control" } })
+
+            @Html.ValidationMessageFor(model => model.HoTenKH, "", new { @class = "text-danger" })
+            <label class="control-label">Địa Chỉ</label>
+            @Html.EditorFor(model => model.DiaChiKH, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DiaChiKH, "", new { @class = "text-danger" })
+            <label class="control-label">Số ĐT</label>
+            @Html.EditorFor(model => model.SoDienThoaiKH, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SoDienThoaiKH, "", new { @class = "text-danger" })
+            <label class="control-label">Tên ĐN</label>
+            @Html.EditorFor(model => model.TenDN, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+        <div class="left">
+            @*<label class="control-label">Trạng Thái</label>
+            <select class="dropdown editdropdown" name="trangthai">
+                <option value="@Model.TrangThai">@Model.TrangThai</option>
+                <option value="Đã giao">Đã giao</option>
+                <option value="Đang giao">Đang giao</option>
+            </select>*@
+            <label class="control-label">Mật Khẩu</label>
+            @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+            <label class="control-label">Email</label>
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            <a href="@Url.Action("KhachHang","QLKhachHang")" style="margin-left:-55px; margin-top:22px;" class="btncreate">Quay Lại</a>
+
+            <input type="submit" class="btncreate" style="width:130px; background-color:#e7ab3c" value="Lưu" />
+        </div>
+
+    </div>
+
+}
+

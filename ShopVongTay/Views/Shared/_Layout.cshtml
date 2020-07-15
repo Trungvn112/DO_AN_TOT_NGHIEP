@@ -1,0 +1,389 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewBag.Title </title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/themify-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/style.css" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link href="~/css/Tooltip.css" rel="stylesheet" />
+    <link href="~/css/popup.css" rel="stylesheet" />
+
+
+    <script src="~/Scripts/TimKiem.js"></script>
+    <script src="~/Scripts/DKDN.js"></script>
+ 
+    <script src="~/Scripts/GioHang2.js"></script>
+
+
+
+
+
+
+</head>
+<body>
+    <!-- Page Preloder -->
+    @*<div id="preloder">
+            <div class="loader"></div>
+        </div>*@
+
+    <!-- Header Section Begin -->
+    <header class="header-section" @*style="background-color:oldlace;*@">
+        <div class="header-top">
+            <div class="container">
+                <div class="ht-left">
+                    @*<div class="mail-service">
+                        <i class=" fa fa-envelope"></i>
+                        Agarwoodshop@gmail.com
+                    </div>*@
+                    <div class="phone-service">
+                        <i class=" fa fa-phone"></i>
+                        +84 969052509
+                    </div>
+                </div>
+                <div class="ht-right">
+                    @*@{
+                        if (Session["Email"] == null)
+                        {
+                            <a href="@Url.Action("DangNhap","Home")" class="login-panel"><i class="fa fa-user"></i>Đăng Nhập</a>
+                        }
+                        else
+                        {
+                            <a href="/Home/DangXuat" class="login-panel"><i class="fa fa-sign-out"></i> Đăng Xuất</a>
+                            <a href="#" id="namemenu" class="login-panel"><i class="fa fa-user"></i> @Session["Email"]</a>
+
+                        }
+                    }*@
+
+
+                    @if (Session["username"] != null)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                <a href="/SSO/SignOut" class="login-panel"><i class="fa fa-sign-out"></i> Đăng Xuất</a>
+                <a href="#" id="namemenu" class="login-panel"><i class="fa fa-user"></i>@User.Identity.Name</a>
+
+                
+
+            }
+            else
+            {
+                <a href="@Url.Action("DangNhap","Home")" class="login-panel"><i class="fa fa-user"></i>Đăng Nhập</a>
+
+                
+
+
+
+            }
+        }
+        else
+        {
+            if (Session["MaKH"]!= null)
+            {
+                <a href="/Home/DangXuat" class="login-panel"><i class="fa fa-sign-out"></i> Đăng Xuất</a>
+                <a href="#" id="namemenu" class="login-panel"><i class="fa fa-user"></i> @Session["Email"]</a>
+
+
+            }
+            else
+            {
+                 <a href="@Url.Action("DangNhap","Home")" class="login-panel"><i class="fa fa-user"></i>Đăng Nhập</a>
+
+            }
+
+        }
+
+                    <div class="lan-selector">
+                        <select class="language_drop" name="countries" id="countries" style="width:300px;">
+                            <option value='yt' data-image="/img/cờ.jpg" data-imagecss="flag yt"
+                                    data-title="Việt Nam">
+                                Việt Nam
+                            </option>
+                            <option value='yu' data-image="/img/flag-1.jpg" data-imagecss="flag yu"
+                                    data-title="English">
+                                English
+                            </option>
+                        </select>
+                    </div>
+                    <div class="top-social">
+                        <a href="#"><i class="ti-facebook"></i></a>
+                        <a href="#"><i class="ti-twitter-alt"></i></a>
+                        <a href="#"><i class="ti-linkedin"></i></a>
+                        <a href="#"><i class="ti-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="inner-header">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2">
+                        <div class="logo">
+                            <a href="@Url.Action("TrangChu","Home")">
+                                <img src="~/img/logoweb.png" alt="" style="
+    margin-top: -54px;
+    max-width: 125%;">
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-7 col-md-7">
+                        <div class="advanced-search">
+                            <button type="button" class="category-btn">Tìm</button>
+
+                            <div class="input-group">
+                                <form action="/Home/TimKiem">
+                                    <input type="text" placeholder="" name="name" style="background-color:inherit;"  required>
+                                    @*<button id="btntimkiem" type="button"><i class="ti-search"></i></button>*@
+                                    <button id="btntimkiem" type="submit"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-lg-3 text-right col-md-3">
+                        <ul class="nav-right">
+
+                            <li class="cart-icon">
+                                <a href="/GioHang/GioHang" class="cart-icon">
+                                    <i class="icon_bag_alt"></i>
+                                    <span>@Session["TongSL"]</span>
+                                </a>
+                                @*<a href="/GioHang/GioHang" class="rightz">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <span><p style="color:red; display:inline-block;padding:0;margin:0">@Session["TongSL"] </p> <p style="color:red;display:inline-block;padding:0;margin:0">@Session["TongTien"]</p> VNĐ</span>
+                                    </a>*@
+                                @*<div class="cart-hover">
+                                        <div class="select-items">
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="si-pic"><img src="img/select-product-1.jpg" alt=""></td>
+                                                        <td class="si-text">
+                                                            <div class="product-selected">
+                                                                    <p>$60.00 x 1</p>
+                                                                    <h6>Kabino Bedside Table</h6>
+                                                                </div>
+                                                        </td>
+                                                        <td class="si-close">
+                                                                <i class="ti-close"></i>
+                                                            </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="si-pic"><img src="img/select-product-2.jpg" alt=""></td>
+                                                        <td class="si-text">
+                                                            <div class="product-selected">
+                                                                    <p>$60.00 x 1</p>
+                                                                    <h6>Kabino Bedside Table</h6>
+                                                                </div>
+                                                        </td>
+                                                        <td class="si-close">
+                                                                <i class="ti-close"></i>
+                                                            </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="select-total">
+                                            <span>total:</span>
+                                            <h5>$120.00</h5>
+                                        </div>
+                                        <div class="select-button">
+                                            <a href="@Url.Action("GioHang","GioHang")" class="primary-btn view-card">Xem Giỏ Hàng</a>
+                                            <a href="@Url.Action("ThanhToan","GioHang")" class="primary-btn checkout-btn">Thanh Toán</a>
+                                        </div>
+                                    </div>*@
+                            </li>
+
+                            <li class="cart-price">
+
+
+                                <span> @Session["TongTien"] VNĐ</span>
+
+
+
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-item">
+            <div class="container">
+                <div class="nav-depart">
+                    <div class="depart-btn">
+                        <i class="ti-menu"></i>
+                        <span>Danh mục sản phẩm</span>
+                        <ul class="depart-hover">
+                            <li class="active"><a href="@Url.Action("NhangTram","SanPham")">Nhang Trầm Hương</a></li>
+                            <li><a href="@Url.Action("PhuKien","SanPham")">Phụ Kiện</a></li>
+                            <li><a href="@Url.Action("TramHuongChim","SanPham")">Trầm Hương Chìm</a></li>
+                            <li><a href="@Url.Action("VongTay108","SanPham")">Vòng Tay 108</a></li>
+                            <li><a href="@Url.Action("VongTayBocVang","SanPham")">Vòng Tay Bọc Vàng</a></li>
+                            <li><a href="@Url.Action("VongTayTyHuu","SanPham")">Vòng Tay Tỳ Hưu</a></li>
+                            <li><a href="@Url.Action("SanPhamNam","SanPham")">Vòng Tay Nam</a></li>
+                            <li><a href="@Url.Action("SanPhamNu","SanPham")">Vòng Tay Nữ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <nav class="nav-menu mobile-menu">
+                    <ul>
+                        <li><a href="@Url.Action("TrangChu","Home")">Trang Chủ</a></li>
+                        <li><a href="@Url.Action("GioiThieu","Home")">Giới Thiệu</a></li>
+                        <li>
+                            <a href="@Url.Action("SanPham","Home")">Nổi Bật</a>
+                            <ul class="dropdown">
+                                <li><a href="@Url.Action("SanPhamNam","SanPham")">Vòng Tay Nam</a></li>
+                                <li><a href="@Url.Action("SanPhamNu","SanPham")">Vòng Tay Nữ</a></li>
+                                <li><a href="@Url.Action("NhangTram","SanPham")">Nhang Trầm</a></li>
+                                <li><a href="@Url.Action("PhuKien","SanPham")">Phụ Kiện</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="@Url.Action("TatCaTinTuc","TinTuc")">Tin Tức</a></li>
+                        <li><a href="@Url.Action("LienHe","Home")">Liên Hệ</a></li>
+                        <li>
+                            <a href="#">Trang</a>
+                            <ul class="dropdown">
+                                <li><a href="@Url.Action("TrangChu","Home")">Tin Tức</a></li>
+                                <li><a href="@Url.Action("GioHang","GioHang")">Giỏ Hàng</a></li>
+                                <li><a href="@Url.Action("ThanhToan","GioHang")">Thanh Toán</a></li>
+                                <li><a href="@Url.Action("LienHe","Home")">Liên Hệ</a></li>
+                                <li><a href="@Url.Action("DangKy","Home")">Đăng Kí</a></li>
+                                <li><a href="@Url.Action("DangNhap","Home")">Đăng Nhập</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <div id="mobile-menu-wrap"></div>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <div class="v">
+        @RenderBody()
+
+
+    </div>
+
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="footer-left">
+                        <div class="footer-logo">
+                            <a href="#"><img src="~/img/logoweb.png" alt=""></a>
+                        </div>
+                        <ul>
+                            <li>SHOWROOM HỒ CHÍ MINH</li>
+                            <li>71 Nguyễn Khắc Nhu, P. Cô Giang, Quận 1, Tp.HCM</li>
+                            <li>Giờ mở cửa: ( 8h00 am -22h00 pm )</li>
+                            <li>Hotline: 0933348368</li>
+                        </ul>
+                        <div class="footer-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 offset-lg-1">
+                    <div class="footer-widget">
+                        <h5>Về Chúng Tôi</h5>
+                        <ul>
+                            <li><a href="@Url.Action("GioiThieu","Home")">Giới Thiệu</a></li>
+                            <li><a href="@Url.Action("TinTuc","Home")">Tin Tức</a></li>
+                            <li><a href="@Url.Action("LienHe","Home")">Liên Hệ</a></li>
+                           
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="footer-widget">
+                        <h5>Bộ Sưu Tập</h5>
+                        <ul>
+                            <li><a href="@Url.Action("SanPhamNam","SanPham")">Vòng Tay Nam</a></li>
+                            <li><a href="@Url.Action("SanPhamNu","SanPham")">Vòng Tay Nữ</a></li>
+                            <li><a href="@Url.Action("NhangTram","SanPham")">Nhang Trầm</a></li>
+                            <li><a href="@Url.Action("PhuKien","SanPham")">Phụ Kiện</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="newslatter-item">
+                        <h5>Gửi Tin Cho Chúng Tôi</h5>
+                        <p>Liên hệ E-mail về cửa hàng để nhận các ưu đãi đặc biệt của chúng tôi .</p>
+                        <form action="#" class="subscribe-form">
+                            <input disabled type="text" placeholder="Liên hệ : Agarwoodshop@gmail.com">
+                            @*<button type="button">Subscribe</button>*@
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-reserved">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyright-text">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script>  by <a href="https://colorlib.com" target="_blank">Agarwood</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </div>
+                        <div class="payment-pic">
+                            <img src="~/img/payment-method.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery-ui.min.js"></script>
+    <script src="~/js/jquery.countdown.min.js"></script>
+    <script src="~/js/jquery.nice-select.min.js"></script>
+    <script src="~/js/jquery.zoom.min.js"></script>
+    <script src="~/js/jquery.dd.min.js"></script>
+    <script src="~/js/jquery.slicknav.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/main1.js"></script>
+
+
+
+</body>
+</html>

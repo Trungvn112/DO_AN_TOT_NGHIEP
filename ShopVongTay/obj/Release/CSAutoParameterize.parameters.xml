@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="ShopVongTayEntities-Web.config Connection String" description="ShopVongTayEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.ShopTramHuong.csdl|res://*/Models.ShopTramHuong.ssdl|res://*/Models.ShopTramHuong.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=shopvongtay.database.windows.net;initial catalog=ShopVongTay;user id=trungvn;password=admin@123;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\ShopVongTay\\ShopVongTay\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ShopVongTayEntities']/@connectionString" />
+  </parameter>
+</parameters>

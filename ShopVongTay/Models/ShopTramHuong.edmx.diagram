@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c5405575eed143c7a457217b8c0a4116" Name="Diagram1">
+        <EntityTypeShape EntityType="ShopVongTayModel.ADMIN" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopVongTayModel.ChiTietDH" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopVongTayModel.ChiTietPhieuNhap" Width="1.5" PointX="8.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopVongTayModel.DanhGia" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopVongTayModel.DonHang" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopVongTayModel.HinhThucGiaoDich" Width="1.5" PointX="9.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopVongTayModel.HinhThucThanhToan" Width="1.5" PointX="10.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopVongTayModel.KhachHang" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopVongTayModel.LoaiSP" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopVongTayModel.LoaiTinTuc" Width="1.5" PointX="8.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopVongTayModel.MaGiam" Width="1.5" PointX="11.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopVongTayModel.NhaCungCapSP" Width="1.5" PointX="6" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopVongTayModel.PhieuNhap" Width="1.5" PointX="6" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopVongTayModel.SanPham" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopVongTayModel.sysdiagram" Width="1.5" PointX="12.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopVongTayModel.TinTuc" Width="1.5" PointX="11" PointY="10.375" IsExpanded="true" />
+        <AssociationConnector Association="ShopVongTayModel.FK_ChiTietDH_DonHang" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopVongTayModel.FK_ChiTietDH_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopVongTayModel.FK_ChiTietPhieuNhap_NhaCungCapSP" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopVongTayModel.FK_ChiTietPhieuNhap_PhieuNhap" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopVongTayModel.FK_ChiTietPhieuNhap_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopVongTayModel.FK_DanhGia_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopVongTayModel.FK_DanhGia_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopVongTayModel.FK_SanPham_LoaiSP" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopVongTayModel.FK_TinTuc_LoaiTinTuc" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

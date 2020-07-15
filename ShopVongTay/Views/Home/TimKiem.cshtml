@@ -1,0 +1,109 @@
+﻿@using ShopVongTay.Models
+@model List<SanPham>
+@{
+    ViewBag.Title = "TimKiem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/css/sanpham.css" rel="stylesheet" />
+@if (Model.Count > 0)
+{
+    <h6>Số sản phẩm tìm được khớp với từ khóa @Session["nametimkiem"] là: @Model.Count</h6>
+    <form action="" method="post">
+
+        @foreach (var item in Model)
+        {
+            <div class="sanpham">
+                <div class="pi-pic">
+                    <img src="~/img/sanpham/@item.HinhAnh" alt="">
+
+                    <ul>
+                        <li class="w-icon active"><a id="txtmua" onclick="DatHang(@item.MaSP)"><i class="icon_bag_alt"></i></a></li>
+                        <li class="quick-view"><a id="myBtn" onclick="Popup(@item.MaSP)"><i class="fa fa-eye" aria-hidden="true"></i> Xem Nhanh</a></li>
+                        <li class="w-icon"><a href="~/ViewSanPham/ChiTietSanPham?MaSP=@item.MaSP"><i class="fa fa-random"></i></a></li>
+                    </ul>
+                </div>
+                <div class="pi-text">
+                    <div class="catagory-name">@item.LoaiSP.TenLoai</div>
+                    <a href="#">
+                        <h5>@item.TenSP</h5>
+                    </a>
+                    <div class="product-price">
+                        @string.Format("{0:0,0}", item.DonGia)đ
+                    </div>
+                </div>
+            </div>
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>THÔNG TIN SẢN PHẨM</h2>
+                        <span class="close">&times;</span>
+
+                    </div>
+                    <div class="modal-body">
+                        <p>@item.MaSP</p>
+                        <p>zzzzz</p>
+                        <p>zzzzz</p>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        }
+
+
+    </form>
+}
+else
+{
+
+    <h3 style="text-align:center">Không tìm thấy sản phẩm vào phù hợp với từ khóa @Session["nametimkiem"] !</h3>
+}
+@if (Session["username"] != null)
+{
+    <span style="visibility:hidden" id="username">@Session["username"]</span>
+}
+else
+{
+    <span style="visibility:hidden" id="username">@Session["Email"]</span>
+}
+<script>
+    // Get the modal
+    var modelz = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    var btn = document.getElementById("myBtn");
+
+    // When the user clicks the button, open the modal
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modelz.style.display = "none";
+    }
+
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

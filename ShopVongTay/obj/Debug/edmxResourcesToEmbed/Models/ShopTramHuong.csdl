@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ShopVongTayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ADMIN">
+    <Key>
+      <PropertyRef Name="MaAD" />
+    </Key>
+    <Property Name="MaAD" Type="Int32" Nullable="false" />
+    <Property Name="HoTenAD" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="DiaChiAD" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="SoDTAD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TenDNAD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MatKhauAD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NgaySinhAD" Type="DateTime" Precision="0" />
+    <Property Name="GioiTinhAD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmailAD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="HinhAnhAD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ChiTietDH">
+    <Key>
+      <PropertyRef Name="SoDH" />
+      <PropertyRef Name="MaSP" />
+    </Key>
+    <Property Name="SoDH" Type="Int32" Nullable="false" />
+    <Property Name="MaSP" Type="Int32" Nullable="false" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="DonGia" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ThanhTien" Type="Decimal" Precision="29" Scale="0" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="DonHang" Relationship="Self.FK_ChiTietDH_DonHang" FromRole="ChiTietDH" ToRole="DonHang" />
+    <NavigationProperty Name="SanPham" Relationship="Self.FK_ChiTietDH_SanPham" FromRole="ChiTietDH" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="ChiTietPhieuNhap">
+    <Key>
+      <PropertyRef Name="MaPhieu" />
+      <PropertyRef Name="MaSP" />
+    </Key>
+    <Property Name="MaPhieu" Type="Int32" Nullable="false" />
+    <Property Name="MaSP" Type="Int32" Nullable="false" />
+    <Property Name="MaNCC" Type="Int32" />
+    <Property Name="TenSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="DonGia" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ThanhTien" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="NhaCungCapSP" Relationship="Self.FK_ChiTietPhieuNhap_NhaCungCapSP" FromRole="ChiTietPhieuNhap" ToRole="NhaCungCapSP" />
+    <NavigationProperty Name="PhieuNhap" Relationship="Self.FK_ChiTietPhieuNhap_PhieuNhap" FromRole="ChiTietPhieuNhap" ToRole="PhieuNhap" />
+    <NavigationProperty Name="SanPham" Relationship="Self.FK_ChiTietPhieuNhap_SanPham" FromRole="ChiTietPhieuNhap" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="DanhGia">
+    <Key>
+      <PropertyRef Name="MaDanhGia" />
+    </Key>
+    <Property Name="MaSP" Type="Int32" Nullable="false" />
+    <Property Name="MaDanhGia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cmtDanhGia" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="DiemDG" Type="Double" />
+    <Property Name="TenKhachHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgayCmt" Type="DateTime" Precision="0" />
+    <Property Name="MaKH" Type="Int32" />
+    <NavigationProperty Name="KhachHang" Relationship="Self.FK_DanhGia_KhachHang" FromRole="DanhGia" ToRole="KhachHang" />
+    <NavigationProperty Name="SanPham" Relationship="Self.FK_DanhGia_SanPham" FromRole="DanhGia" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="DonHang">
+    <Key>
+      <PropertyRef Name="SoHD" />
+    </Key>
+    <Property Name="SoHD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaKH" Type="Int32" />
+    <Property Name="NgayDatHang" Type="DateTime" Precision="0" />
+    <Property Name="NgayGiaoHang" Type="DateTime" Precision="0" />
+    <Property Name="TongTien" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TenNguoiNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChiNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DienThoaiKH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MaHinhThucTT" Type="Int32" />
+    <Property Name="MaHinhThucGD" Type="Int32" />
+    <Property Name="EmailNhanHang" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ChiTietDHs" Relationship="Self.FK_ChiTietDH_DonHang" FromRole="DonHang" ToRole="ChiTietDH" />
+  </EntityType>
+  <EntityType Name="HinhThucGiaoDich">
+    <Key>
+      <PropertyRef Name="MaHinhThucGD" />
+    </Key>
+    <Property Name="MaHinhThucGD" Type="Int32" Nullable="false" />
+    <Property Name="TenHinhThucGD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="HinhThucThanhToan">
+    <Key>
+      <PropertyRef Name="MaHinhThucTT" />
+    </Key>
+    <Property Name="MaHinhThucTT" Type="Int32" Nullable="false" />
+    <Property Name="TenHinhThucTT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HoTenKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChiKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SoDienThoaiKH" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TenDN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgaySinhKH" Type="DateTime" Precision="0" />
+    <Property Name="GioiTinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DanhGias" Relationship="Self.FK_DanhGia_KhachHang" FromRole="KhachHang" ToRole="DanhGia" />
+  </EntityType>
+  <EntityType Name="LoaiSP">
+    <Key>
+      <PropertyRef Name="MaLoai" />
+    </Key>
+    <Property Name="MaLoai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SanPhams" Relationship="Self.FK_SanPham_LoaiSP" FromRole="LoaiSP" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="LoaiTinTuc">
+    <Key>
+      <PropertyRef Name="MaLoaiTinTuc" />
+    </Key>
+    <Property Name="MaLoaiTinTuc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoaiTT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TinTucs" Relationship="Self.FK_TinTuc_LoaiTinTuc" FromRole="LoaiTinTuc" ToRole="TinTuc" />
+  </EntityType>
+  <EntityType Name="MaGiam">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaGiamGia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="GiaTri" Type="Int32" />
+    <Property Name="NgayHetHan" Type="DateTime" Precision="3" />
+    <Property Name="SoLuong" Type="Int32" />
+  </EntityType>
+  <EntityType Name="NhaCungCapSP">
+    <Key>
+      <PropertyRef Name="MaNCC" />
+    </Key>
+    <Property Name="MaNCC" Type="Int32" Nullable="false" />
+    <Property Name="TenNCC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SoDTNCC" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="DiaChiNCC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmailNCC" Type="Binary" MaxLength="50" FixedLength="false" />
+    <NavigationProperty Name="ChiTietPhieuNhaps" Relationship="Self.FK_ChiTietPhieuNhap_NhaCungCapSP" FromRole="NhaCungCapSP" ToRole="ChiTietPhieuNhap" />
+  </EntityType>
+  <EntityType Name="PhieuNhap">
+    <Key>
+      <PropertyRef Name="MaPhieu" />
+    </Key>
+    <Property Name="MaPhieu" Type="Int32" Nullable="false" />
+    <Property Name="NgayNhap" Type="DateTime" Precision="0" />
+    <Property Name="TongTien" Type="Double" />
+    <NavigationProperty Name="ChiTietPhieuNhaps" Relationship="Self.FK_ChiTietPhieuNhap_PhieuNhap" FromRole="PhieuNhap" ToRole="ChiTietPhieuNhap" />
+  </EntityType>
+  <EntityType Name="SanPham">
+    <Key>
+      <PropertyRef Name="MaSP" />
+    </Key>
+    <Property Name="MaSP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenSP" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DonGia" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaLoai" Type="Int32" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="GioiTinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgayChinhSua" Type="DateTime" Precision="3" />
+    <Property Name="NgayTao" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ChiTietDHs" Relationship="Self.FK_ChiTietDH_SanPham" FromRole="SanPham" ToRole="ChiTietDH" />
+    <NavigationProperty Name="ChiTietPhieuNhaps" Relationship="Self.FK_ChiTietPhieuNhap_SanPham" FromRole="SanPham" ToRole="ChiTietPhieuNhap" />
+    <NavigationProperty Name="DanhGias" Relationship="Self.FK_DanhGia_SanPham" FromRole="SanPham" ToRole="DanhGia" />
+    <NavigationProperty Name="LoaiSP" Relationship="Self.FK_SanPham_LoaiSP" FromRole="SanPham" ToRole="LoaiSP" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TinTuc">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenBaiViet" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaLoaiTinTuc" Type="Int32" Nullable="false" />
+    <Property Name="Keywords" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MetaTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="AnhDaiDien" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="CapNhat" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="LoaiTinTuc" Relationship="Self.FK_TinTuc_LoaiTinTuc" FromRole="TinTuc" ToRole="LoaiTinTuc" />
+  </EntityType>
+  <Association Name="FK_ChiTietDH_DonHang">
+    <End Role="DonHang" Type="Self.DonHang" Multiplicity="1" />
+    <End Role="ChiTietDH" Type="Self.ChiTietDH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonHang">
+        <PropertyRef Name="SoHD" />
+      </Principal>
+      <Dependent Role="ChiTietDH">
+        <PropertyRef Name="SoDH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiTietDH_SanPham">
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+    <End Role="ChiTietDH" Type="Self.ChiTietDH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="MaSP" />
+      </Principal>
+      <Dependent Role="ChiTietDH">
+        <PropertyRef Name="MaSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiTietPhieuNhap_NhaCungCapSP">
+    <End Role="NhaCungCapSP" Type="Self.NhaCungCapSP" Multiplicity="0..1" />
+    <End Role="ChiTietPhieuNhap" Type="Self.ChiTietPhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhaCungCapSP">
+        <PropertyRef Name="MaNCC" />
+      </Principal>
+      <Dependent Role="ChiTietPhieuNhap">
+        <PropertyRef Name="MaNCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiTietPhieuNhap_PhieuNhap">
+    <End Role="PhieuNhap" Type="Self.PhieuNhap" Multiplicity="1" />
+    <End Role="ChiTietPhieuNhap" Type="Self.ChiTietPhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhieuNhap">
+        <PropertyRef Name="MaPhieu" />
+      </Principal>
+      <Dependent Role="ChiTietPhieuNhap">
+        <PropertyRef Name="MaPhieu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiTietPhieuNhap_SanPham">
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+    <End Role="ChiTietPhieuNhap" Type="Self.ChiTietPhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="MaSP" />
+      </Principal>
+      <Dependent Role="ChiTietPhieuNhap">
+        <PropertyRef Name="MaSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DanhGia_KhachHang">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="DanhGia" Type="Self.DanhGia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="DanhGia">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DanhGia_SanPham">
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+    <End Role="DanhGia" Type="Self.DanhGia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="MaSP" />
+      </Principal>
+      <Dependent Role="DanhGia">
+        <PropertyRef Name="MaSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SanPham_LoaiSP">
+    <End Role="LoaiSP" Type="Self.LoaiSP" Multiplicity="0..1" />
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiSP">
+        <PropertyRef Name="MaLoai" />
+      </Principal>
+      <Dependent Role="SanPham">
+        <PropertyRef Name="MaLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TinTuc_LoaiTinTuc">
+    <End Role="LoaiTinTuc" Type="Self.LoaiTinTuc" Multiplicity="1" />
+    <End Role="TinTuc" Type="Self.TinTuc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiTinTuc">
+        <PropertyRef Name="MaLoaiTinTuc" />
+      </Principal>
+      <Dependent Role="TinTuc">
+        <PropertyRef Name="MaLoaiTinTuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ShopVongTayEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ADMINs" EntityType="Self.ADMIN" />
+    <EntitySet Name="ChiTietDHs" EntityType="Self.ChiTietDH" />
+    <EntitySet Name="ChiTietPhieuNhaps" EntityType="Self.ChiTietPhieuNhap" />
+    <EntitySet Name="DanhGias" EntityType="Self.DanhGia" />
+    <EntitySet Name="DonHangs" EntityType="Self.DonHang" />
+    <EntitySet Name="HinhThucGiaoDiches" EntityType="Self.HinhThucGiaoDich" />
+    <EntitySet Name="HinhThucThanhToans" EntityType="Self.HinhThucThanhToan" />
+    <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
+    <EntitySet Name="LoaiSPs" EntityType="Self.LoaiSP" />
+    <EntitySet Name="LoaiTinTucs" EntityType="Self.LoaiTinTuc" />
+    <EntitySet Name="MaGiams" EntityType="Self.MaGiam" />
+    <EntitySet Name="NhaCungCapSPs" EntityType="Self.NhaCungCapSP" />
+    <EntitySet Name="PhieuNhaps" EntityType="Self.PhieuNhap" />
+    <EntitySet Name="SanPhams" EntityType="Self.SanPham" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TinTucs" EntityType="Self.TinTuc" />
+    <AssociationSet Name="FK_ChiTietDH_DonHang" Association="Self.FK_ChiTietDH_DonHang">
+      <End Role="DonHang" EntitySet="DonHangs" />
+      <End Role="ChiTietDH" EntitySet="ChiTietDHs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiTietDH_SanPham" Association="Self.FK_ChiTietDH_SanPham">
+      <End Role="SanPham" EntitySet="SanPhams" />
+      <End Role="ChiTietDH" EntitySet="ChiTietDHs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiTietPhieuNhap_NhaCungCapSP" Association="Self.FK_ChiTietPhieuNhap_NhaCungCapSP">
+      <End Role="NhaCungCapSP" EntitySet="NhaCungCapSPs" />
+      <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhaps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiTietPhieuNhap_PhieuNhap" Association="Self.FK_ChiTietPhieuNhap_PhieuNhap">
+      <End Role="PhieuNhap" EntitySet="PhieuNhaps" />
+      <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhaps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiTietPhieuNhap_SanPham" Association="Self.FK_ChiTietPhieuNhap_SanPham">
+      <End Role="SanPham" EntitySet="SanPhams" />
+      <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhaps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DanhGia_KhachHang" Association="Self.FK_DanhGia_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="DanhGia" EntitySet="DanhGias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DanhGia_SanPham" Association="Self.FK_DanhGia_SanPham">
+      <End Role="SanPham" EntitySet="SanPhams" />
+      <End Role="DanhGia" EntitySet="DanhGias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SanPham_LoaiSP" Association="Self.FK_SanPham_LoaiSP">
+      <End Role="LoaiSP" EntitySet="LoaiSPs" />
+      <End Role="SanPham" EntitySet="SanPhams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TinTuc_LoaiTinTuc" Association="Self.FK_TinTuc_LoaiTinTuc">
+      <End Role="LoaiTinTuc" EntitySet="LoaiTinTucs" />
+      <End Role="TinTuc" EntitySet="TinTucs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

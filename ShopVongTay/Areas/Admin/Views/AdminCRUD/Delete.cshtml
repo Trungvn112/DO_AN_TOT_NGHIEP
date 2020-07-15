@@ -1,0 +1,80 @@
+﻿@model ShopVongTay.Models.SanPham
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .frmauthor {
+        font-family: serif;
+    }
+
+    .btncreate {
+        background-color: #e7ab3c;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        color: white;
+    }
+
+    table {
+        text-align: center;
+    }
+
+    th {
+        color: white;
+        background-color: #e7ab3c;
+    }
+</style>
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+    <div class="w3-container w3-brown">
+        <h2>Xóa sản phẩm</h2>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Tên sản phẩm</th>
+                <th>Giá</th>
+                <th>Số Lượng</th>
+                <th>Ảnh</th>
+                <th>Số Lượng</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.TenSP)
+                </td>
+                <td>  @Html.DisplayFor(model => model.DonGia)</td>
+
+                <td>
+                    @Html.DisplayFor(model => model.SoLuong)
+                </td>
+                <td><img width="15%" src="~/img/sanpham/@Html.DisplayFor(model =>model.HinhAnh)" /></td>
+                <td>
+                    @Html.DisplayFor(model => model.SoLuong)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        function xoa() {
+            alert("Xóa sản phẩm thành công!");
+        }
+    </script>
+
+    <a href="@Url.Action("Index","AdminCRUD")" class="btncreate">Quay Lại</a>
+
+    <input type="submit" onclick="xoa()" class="btncreate" style="width:130px; background-color:#e7ab3c" value="Xóa" />
+
+}
+
+

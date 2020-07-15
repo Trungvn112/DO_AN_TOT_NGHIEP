@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "TinTuc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <a href="@Url.Action("TrangChu","Home")"><i class="fa fa-home"></i> Trang Chủ</a>
+                    <span>Tin Tức</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Section Begin -->
+<!-- Blog Section Begin -->
+<section class="blog-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1">
+                <div class="blog-sidebar">
+                    <div class="search-form">
+                        <h4>Tìm Kiếm</h4>
+                        <form action="#">
+                            <input type="text" placeholder="Search . . .  ">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    <div class="blog-catagory">
+                        <h4>Danh Mục</h4>
+                        <ul>
+                            <li><a href="#">Góc Khám Phá</a></li>
+                            <li><a href="#">Góc Tư Vấn</a></li>
+                            <li><a href="#">Vòng tay Trầm</a></li>
+                            <li><a href="#">Khiếu Mãi</a></li>
+                        </ul>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+
+          <!-- Blog  -->
+            <div class="col-lg-9 order-1 order-lg-2">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="blog-item">
+                            <div class="bi-pic">
+                                <img src="img/blog/blog-1.jpg" alt="">
+                            </div>
+                            <div class="bi-text">
+                                <a href="./blog-details.html">
+                                    <h4>The Personality Trait That Makes People Happier</h4>
+                                </a>
+                                <p>travel <span>- May 19, 2019</span></p>
+                            </div>
+                        </div>
+                    </div>
+                  
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog Section End -->

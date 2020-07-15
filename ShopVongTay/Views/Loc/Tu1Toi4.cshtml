@@ -1,0 +1,179 @@
+﻿
+@{
+    ViewBag.Title = "Tu1Toi4";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/css/sanphamchinh.css" rel="stylesheet" />
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <a href="@Url.Action("TrangChu","Home")"><i class="fa fa-home"></i> Trang Chủ</a>
+                    <span> </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Section Begin -->
+<!-- Filter -->
+<div class="breacrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb1">
+                    <div class="loc">
+                        <label>Chọn mức giá:</label>
+                        <a href="@Url.Action("Duoi1Trieu","Loc")">Dưới 1 triệu</a>
+                        <a href="@Url.Action("Tu1Toi4","Loc")">Từ 1- 4 triệu</a>
+                        <a href="@Url.Action("Tu4Den7","Loc")">Từ 4-7 triệu</a>
+                        <a href="@Url.Action("Tu7Den13","Loc")">Từ 7-13 triệu</a>
+                        <a href="@Url.Action("Tren13trieu","Loc")">Trên 13 triệu</a>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Filter -->
+<!-- Product Shop Section Begin -->
+<section class="product-shop spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
+                <div class="filter-widget">
+                    <h4 class="fw-title">Sản Phẩm</h4>
+                    <ul class="filter-catagories">
+                        <li><a href="@Url.Action("SanPham","Home")">Tất Cả Các Sản Phẩm</a></li>
+                        <li><a href="@Url.Action("SanPhamNam","SanPham")">Vòng Tay Nam</a></li>
+                        <li><a href="@Url.Action("SanPhamNu","SanPham")">Vòng Tay Nữ</a></li>
+                        <li><a href="@Url.Action("VongTay108","SanPham")">Vòng Tay 108</a></li>
+                        <li><a href="@Url.Action("VongTayTyHuu","SanPham")">Vòng Tay Tỳ Hưu</a></li>
+                        <li><a href="@Url.Action("VongTayBocVang","SanPham")">Vòng Tay Bọc Vàng</a></li>
+                        <li><a href="@Url.Action("TramHuongChim","SanPham")">Trầm Hương Chìm</a></li>
+                        <li><a href="@Url.Action("PhuKien","SanPham")">Phụ Kiện</a></li>
+                        <li><a href="@Url.Action("NhangTram","SanPham")">Nhang Trầm Hương</a></li>
+                    </ul>
+                </div>
+                <!-- Filter -->
+                
+
+                <!-- Filter -->
+
+            </div>
+            <div class="col-lg-9 order-1 order-lg-2">
+                @*<div class="product-show-option">
+                        <div class="row">
+                            <div class="col-lg-7 col-md-7">
+                                <div class="select-option">
+                                    <select class="sorting">
+                                        <option value="">Default Sorting</option>
+                                    </select>
+                                    <select class="p-show">
+                                        <option value="">Show:</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 text-right">
+                                <p>Hiển thị 01- 09 của 36 sản phẩm</p>
+                            </div>
+                        </div>
+                    </div>*@
+                <div class="product-list">
+                    <div class="row">
+
+                        @foreach (var item in Model)
+                        {
+                            <div class="sanpham">
+                                <div class="pi-pic">
+                                    <img src="~/img/sanpham/@item.HinhAnh" alt="">
+                                    <div class="icon">
+                                        <i class="icon_heart_alt"></i>
+                                    </div>
+                                    <ul>
+                                        <li class="w-icon active"><a a id="txtmua" onclick="DatHang(@item.MaSP)"><i class="icon_bag_alt"></i></a></li>
+                                        <li class="quick-view"><a id="myBtn" onclick="Popup(@item.MaSP)"><i class="fa fa-eye" aria-hidden="true"></i> Xem Nhanh</a></li>
+                                        <li class="w-icon"><a href="~/ViewSanPham/ChiTietSanPham?MaSP=@item.MaSP&MaLoai=@item.MaLoai"><i class="fa fa-random"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="pi-text">
+                                    <div class="catagory-name">@item.LoaiSP.TenLoai</div>
+                                    <a href="#">
+                                        <h5>@item.TenSP</h5>
+                                    </a>
+                                    <div class="product-price">
+                                        @string.Format("{0:0,0}", item.DonGia)đ
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                    @*<div class="col-lg-4 col-sm-6">
+                            @Html.Action("NhangTram_1", "SanPham")
+                        </div>*@
+
+                    @*<div class="col-lg-4 col-sm-6">
+                            @Html.Action("NhangTram_2", "SanPham")
+                        </div>*@
+                    <span style="visibility:hidden" id="username">@Session["Email"]</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</section>
+<!-- Product Shop Section End -->
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>THÔNG TIN SẢN PHẨM</h2>
+            <span class="close">&times;</span>
+
+        </div>
+        <div class="modal-body">
+
+
+
+        </div>
+        <div class="modal-footer">
+
+        </div>
+    </div>
+</div>
+<script>
+    // Get the modal
+    var modelz = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    var btn = document.getElementById("myBtn");
+
+    // When the user clicks the button, open the modal
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modelz.style.display = "none";
+    }
+
+
+    // When the user clicks anywhere outside of the modal, close it cái dòng scrip này là để n hiện popup nè . còn cái onclik popup là để láy dữ liệu thôi. m để dưới n đâu ăn js đâu
+    window.onclick = function (event) {
+        if (event.target == modelz) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+
+

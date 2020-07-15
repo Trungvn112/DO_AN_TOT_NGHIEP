@@ -1,0 +1,356 @@
+﻿@using ShopVongTay.Models;
+@model List<SanPham>
+@{
+    ViewBag.Title = "TrangChu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Hero Section Begin -->
+<section class="hero-section">
+    <div class="hero-items owl-carousel">
+        <div class="single-hero-items set-bg" data-setbg="/img/banner-trang-chủ-2020.jpg">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <span>Trang Sức</span>
+                        <h1>Vòng Tay Cao Cấp</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore
+                        </p>
+                        <a href="@Url.Action("SanPham","Home")" class="primary-btn">Mua Ngay</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="single-hero-items set-bg" data-setbg="/img/banner-trang-chủ-2020-1.jpg">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <span>Phụ Kiện,Vòng Tay</span>
+                        <h1>Black friday</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore
+                        </p>
+                        <a href="#" class="primary-btn">Mua Ngay</a>
+                    </div>
+                </div>
+                <div class="off-card">
+                    <h2>Sale <span>50%</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="single-hero-items set-bg" data-setbg="/img/baner33.jpg">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <span>Phong Thủy</span>
+                        <h1>Nhang Trầm</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore
+                        </p>
+                        <a href="#" class="primary-btn">Mua Ngay</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="single-hero-items set-bg" data-setbg="/img/banner4.jpg">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <span>Vòng Tay</span>
+                        <h1>Phong Cách</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore
+                        </p>
+                        <a href="#" class="primary-btn">Mua Ngay</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section End -->
+<!-- Banner Section Begin -->
+<div class="banner-section spad">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="single-banner">
+                    <img src="~/img/Vòng-tay-trầm-hương-thiên-mộc-hương-2.jpg" alt="">
+                    <div class="inner-text">
+                        <a href="@Url.Action("SanPhamNam","SanPham")"><h4>Vòng Tay Nam</h4></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="single-banner">
+                    <img src="~/img/Vòng-tay-trầm-hương-thiên-mộc-hương.jpg" alt="">
+                    <div class="inner-text">
+                        <a href="@Url.Action("SanPhamNu","SanPham")"><h4>Vòng Tay Nữ</h4></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="single-banner">
+                    <img src="~/img/nhang-cây--300x300.jpg" alt="">
+                    <div class="inner-text">
+                        <a href="@Url.Action("NhangTram","SanPham")"><h4>Nhang Trầm</h4></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner Section End -->
+<!-- Women Banner Section Begin -->
+<section class="women-banner spad">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="product-large set-bg" data-setbg="/img/tramnu.jpg">
+                    <h2>Phái Nữ</h2>
+                    <a href="#">Khám Phá Nhiều Hơn</a>
+                </div>
+            </div>
+
+            <div class="col-lg-8 offset-lg-1">
+                <div class="filter-control">
+                    <ul>
+                        <li class="active">Sản Phẩm Nổi Bật</li>
+
+                    </ul>
+                </div>
+                @Html.Action("spnu", "Home")
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Women Banner Section End -->
+<!-- Deal Of The Week Section Begin-->
+<section class="deal-of-week set-bg spad" data-setbg="/img/BiaSS.jpg" style="height:348px">
+    
+</section>
+<!-- Deal Of The Week Section End -->
+<!-- Man Banner Section Begin -->
+<section class="man-banner spad">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="filter-control">
+                    <ul>
+                        <li class="active">Sản Phẩm Nổi Bật</li>
+
+                    </ul>
+                </div>
+
+                @Html.Action("spnam", "Home")
+
+            </div>
+           
+            <div class="col-lg-3 offset-lg-1">
+                <span style="visibility:hidden" id="username">@Session["Email"]</span>
+                <div class="product-large set-bg m-large" data-setbg="/img/tram-do-dang-dot-truc-5-1-1024x683.jpg">
+                    <h2>Phái Mạnh</h2>
+                    <a href="#">Khám Phá Nhiều Hơn</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Man Banner Section End -->
+<!-- Instagram Section Begin -->
+<div class="instagram-photo">
+    <div class="insta-item set-bg" data-setbg="/img/vong-tay-phong-thuy-menh-moc-4.jpg">
+        <div class="inside-text">
+            <i class="ti-instagram"></i>
+            <h5><a href="#">Agarwood_Collection</a></h5>
+        </div>
+    </div>
+    <div class="insta-item set-bg" data-setbg="/img/00.jpg">
+        <div class="inside-text">
+            <i class="ti-instagram"></i>
+            <h5><a href="#">Agarwood_Collection</a></h5>
+        </div>
+    </div>
+    <div class="insta-item set-bg" data-setbg="/img/22.jpg">
+        <div class="inside-text">
+            <i class="ti-instagram"></i>
+            <h5><a href="#">Agarwood_Collection</a></h5>
+        </div>
+    </div>
+    <div class="insta-item set-bg" data-setbg="/img/44.jpg">
+        <div class="inside-text">
+            <i class="ti-instagram"></i>
+            <h5><a href="#">Agarwood_Collection</a></h5>
+        </div>
+    </div>
+    <div class="insta-item set-bg" data-setbg="/img/43.jpg">
+        <div class="inside-text">
+            <i class="ti-instagram"></i>
+            <h5><a href="#">Agarwood_Collection</a></h5>
+        </div>
+    </div>
+    <div class="insta-item set-bg" data-setbg="/img/55.png">
+        <div class="inside-text">
+            <i class="ti-instagram"></i>
+            <h5><a href="#">Agarwood_Collection</a></h5>
+        </div>
+    </div>
+</div>
+<!-- Instagram Section End -->
+<!-- Latest Blog Section Begin -->
+<section class="latest-blog spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Cảm Nhận Khách Hàng</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+               
+
+                <div class="single-latest-blog">
+                        <img src="" alt="">
+                        <div class="latest-text">
+                            <div class="tag-list">
+                                <div class="tag-item">
+                                    <i class="fa fa-calendar-o"></i>
+                                    May 4,2019
+                                </div>
+                                <div class="tag-item">
+                                    <i class="fa fa-comment-o"></i>
+                                    5
+                                </div>
+                            </div>
+                            <a href="#">
+                                <h4>Anh Giang / Giám Đốc Công ty XD&DT TNKk</h4>
+                            </a>
+                            <p>Đã mua sản phẩm tại shop, chất lượng ok, tư vấn nhiệt tình. Mình hay mua đồ phong thủy nên quan trọng người bán phải hiểu rõ sản phẩm và ứng dụng trong phong thủy để tư vấn cho người mua. Bạn tư vấn cho mình tên Hoàng rất chuyên nghiệp. </p>
+                        </div>
+                    </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                    <div class="single-latest-blog">
+                        <img src="" alt="">
+                        <div class="latest-text">
+                            <div class="tag-list">
+                                <div class="tag-item">
+                                    <i class="fa fa-calendar-o"></i>
+                                    May 4,2019
+                                </div>
+                                <div class="tag-item">
+                                    <i class="fa fa-comment-o"></i>
+                                    
+                                </div>
+                            </div>
+                            <a href="#">
+                                <h4>Chị Kim Yến / Chủ shop T&D</h4>
+                            </a>
+                            <p>Lần đầu tiên mua Vòng Tay Trầm Hương nên rất lo, vì hàng giả nhiều nhưng hữu duyên được các bạn nhân viên tư vấn rất nhiệt tình. Rất là xúc động khi có những bạn nhân viên nhiệt tình đến vậy dù giá trị món mình mua cũng không lớn lắm. Chắc chắn sẽ ủng hộ thêm cho shop. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-latest-blog">
+                        <img src="img/latest-3.jpg" alt="">
+                        <div class="latest-text">
+                            <div class="tag-list">
+                                <div class="tag-item">
+                                    <i class="fa fa-calendar-o"></i>
+                                    May 4,2019
+                                </div>
+                                <div class="tag-item">
+                                    <i class="fa fa-comment-o"></i>
+                                    5
+                                </div>
+                            </div>
+                            <a href="#">
+                                <h4>Mỹ Linh / NV ngân hàng</h4>
+                            </a>
+                            <p>Cực kỳ hài lòng với vòng Trầm Hương đã mua, rõ vân trầm, đeo được 1 tháng thì bắt đầu lên màu rất đẹp, mùi thơm thoang thoảng dễ chịu. Đặc biệt kể từ khi mang thì mình rất dễ ngủ chứ không như ngày trước. Sẽ giới thiệu thêm nhiều bạn bè cho shop. </p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="benefit-items">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="single-benefit">
+                        <div class="sb-icon">
+                            <img src="~/img/icon-1.png" alt="">
+                        </div>
+                        <div class="sb-text">
+                            <h6>
+                                MIỄN PHÍ VẬN CHUYỂN
+                            </h6>
+                            <p>Đối với đơn hàng trên 1000$</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-benefit">
+                        <div class="sb-icon">
+                            <img src="~/img/icon-2.png" alt="">
+                        </div>
+                        <div class="sb-text">
+                            <h6>GIAO HÀNG ĐÚNG HẠN</h6>
+                            <p>Không tốn kém thời gian</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-benefit">
+                        <div class="sb-icon">
+                            <img src="~/img/icon-1.png" alt="">
+                        </div>
+                        <div class="sb-text">
+                            <h6>THANH TOÁN AN TOÀN</h6>
+                            <p>Thanh toán an toàn 100%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Get the modal
+        var modelz = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        var btn = document.getElementById("myBtn");
+
+        // When the user clicks the button, open the modal
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modelz.style.display = "none";
+        }
+
+
+        // When the user clicks anywhere outside of the modal, close it
+        if (event.target == modelz) {
+            modal.style.display = "none";
+        }
+                    }
+    </script>
+</section>
+
+<!-- Latest Blog Section End -->
